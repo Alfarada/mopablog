@@ -38,4 +38,10 @@ class CreatePostTest extends BrowserTestCase
         $this->see($title);
 
     }
+
+    function test_creating_a_post_requires_authentication()
+    {
+        $this->visitRoute('posts.create')
+            ->seePageIs(route('login'));
+    }
 }

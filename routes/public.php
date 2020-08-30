@@ -14,12 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/','blog');
-Route::get('blog', 'PageController@blog')->name('blog');
-
-Route::get('blog/{slug}', 'PageController@post')->name('post');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('blog', 'PageController@blog')->name('blog');
+Route::get('entrada/{slug}', 'PageController@post')->name('post');
+Route::get('categoria/{slug}', 'PageController@category')->name('category');
+Route::get('etiqueta/{slug}', 'PageController@tag')->name('tag');
+
+
+
+
 
 

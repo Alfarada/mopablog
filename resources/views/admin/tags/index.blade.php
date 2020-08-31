@@ -37,7 +37,11 @@
                                         </a>
                                     </td>
                                     <td with="10px">
-                                        <a href="#" class="btn btn-sm btn-danger"> Eliminar </a>
+                                        {!! Form::open(['route' => ['tags.destroy', $tag->id ], 'method' => 'DELETE']) !!}
+
+                                            <button  class="btn btn-sm btn-danger"> Eliminar</button>
+                                            
+                                        {!! Form::close()!!}
                                     </td>
                                 </tr>
                                 @endforeach

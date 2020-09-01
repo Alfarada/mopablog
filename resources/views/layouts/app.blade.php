@@ -75,6 +75,23 @@
             </div>
         </nav>
 
+        {{-- Error message  --}}
+        @if ($errors->any())
+        <div class="container mt-3">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li><strong>{{ $error }}</strong></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
         <main class="py-4">
             @yield('content')
         </main>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Tag;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{TagStoreRequest,TagUpdateRequest};
 
@@ -96,9 +95,9 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::find($id)->delete();
+        Tag::find($id)->delete();
 
-        alert('info',' Etiqueta eliminada correctamente');
+        alert('Etiqueta eliminada correctamente');
 
         return back();
     }

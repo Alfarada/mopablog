@@ -4,8 +4,11 @@
 <div class="container text-center">
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
+
+            {!! Alert::render() !!}
+
             <div class="card">
-                <div class="card">
+                
                     <div class="card-header">
                         <h5 class="card-title mb-0"> Indice de etiquetas
                             <a class="btn btn-primary float-right" href=" {{ route('tags.create') }}">crear</a></h5>
@@ -17,6 +20,7 @@
                                 <tr>
                                     <th width="10px">ID</th>
                                     <th>Nombre</th>
+                                    <th>Detalles</th>
                                     <th colspan="3">&nbsp;</th>
                                 </tr>
                             </thead>
@@ -40,7 +44,7 @@
                                         {!! Form::open(['route' => ['tags.destroy', $tag->id ], 'method' => 'DELETE']) !!}
 
                                             <button  class="btn btn-sm btn-danger"> Eliminar</button>
-                                            
+
                                         {!! Form::close()!!}
                                     </td>
                                 </tr>
@@ -50,7 +54,7 @@
 
                         {{ $tags->render() }}
                     </div>
-                </div>
+                
             </div>
         </div>
     </div>

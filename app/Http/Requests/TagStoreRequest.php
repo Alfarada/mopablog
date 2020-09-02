@@ -15,7 +15,7 @@ class TagStoreRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'slug' => 'required|unique:tags,slug'. $this->tag
+            'slug' => 'required|unique:tags,slug'
         ];
     }
 }

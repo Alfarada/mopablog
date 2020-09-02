@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryStoreRequest extends FormRequest
+class PostUpdateRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,7 +15,7 @@ class CategoryStoreRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'slug' => 'required|unique:categories,slug'
+            'slug' => 'required|unique:posts,slug,'. $this->post
         ];
     }
 }

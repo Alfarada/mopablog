@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Post;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\{PostStoreRequest, PostUpdateRequest};
 
 class PostController extends Controller
 {
@@ -14,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('id', 'DESC')->paginate();
+
+        return view('admin.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -24,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -33,9 +36,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(PostStoreRequest $request)
+    {   
+        // dd($request->all());
+        $post = Post::create($request->all());
+
+        alert('Entrada creada con éxito');
+
+        return redirect()->route('posts.edit', $post->id);
     }
 
     /**
@@ -46,7 +54,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('admin.posts.show', ['post' => $post]);
     }
 
     /**
@@ -57,7 +67,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('admin.posts.edit', ['post' => $post]);
     }
 
     /**
@@ -67,9 +79,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostUpdateRequest $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->fill($request->all())->save();
+
+        alert('Entrada actualizada con exito');
+
+        return redirect()->route('posts.edit', $post->id);
     }
 
     /**
@@ -80,6 +98,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::find($id)->delete();
+
+        alert('Entrada eliminada correctamente');
+
+        return back();
     }
 }

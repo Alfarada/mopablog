@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TagStoreRequest extends FormRequest
+class CategoryStoreRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,7 +15,7 @@ class TagStoreRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'slug' => 'required|unique:tags,slug'. $this->tag
+            'slug' => 'required|unique:categories,slug'. $this->category
         ];
     }
 }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Tag;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\{TagStoreRequest,TagUpdateRequest};
+use App\Http\Requests\{TagStoreRequest, TagUpdateRequest};
+use Styde\Html\Facades\Alert;
 
 class TagController extends Controller
 {
@@ -83,9 +84,9 @@ class TagController extends Controller
         $tag = Tag::find($id);
 
         $tag->fill($request->all())->save();
-        
+
         alert('Etiqueta actualizada con exito');
-        
+
         return redirect()->route('tags.edit', $tag->id);
     }
 

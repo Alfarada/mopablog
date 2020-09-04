@@ -9,7 +9,7 @@
                     <h5 class="card-title mb-0"> Crear Entrada </h5>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['route' => 'categories.store'],null,['class' => 'form-control']) !!}
+                    {!! Form::open(['route' => 'posts.store'],null,['class' => 'form-control']) !!}
 
                     @include('admin.posts.partials.form')
 

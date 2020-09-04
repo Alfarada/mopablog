@@ -1,4 +1,3 @@
-
 {{-- field to relate the post to the authenticated user --}}
 {{ Form::hidden('user_id', auth()->user()->id ) }}
 
@@ -17,7 +16,7 @@
 {{-- Slug field --}}
 <div class="form-group">
     {{ Form::label('slug', 'URL Amigable')}}
-    {{ Form::text('slug', null, ['class' => 'form-control','disabled' => 'disabled', 'id' => 'slug'] ) }}
+    {{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug'] ) }}
 </div>
 
 {{-- Img field --}}
@@ -32,7 +31,7 @@
     <label class="mr-3">
         {{ Form::radio('status','PUBLISHED') }} Publicado
     </label>
-    <label >
+    <label>
         {{ Form::radio('status','DRAFT') }} Borrador
     </label>
 </div>
@@ -43,9 +42,9 @@
 
     <div class="container">
         @foreach ($tags as $tag)
-            <label >
-                {{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->title }}
-            </label>
+        <label>
+            {{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->title }}
+        </label>
         @endforeach
     </div>
 </div>
@@ -68,14 +67,20 @@
 </div>
 
 @section('scripts')
-    <script src="{{ asset('vendor/stringToSlug/jquery.stringToSlug.min.js') }}"></script>
-    <script>
-        $(document).ready(function () {
+<script src="{{ asset('vendor/stringToSlug/jquery.stringToSlug.min.js') }}"></script>
+<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+<script>
+    $(document).ready(function () {
             $('#title, #slug').stringToSlug({
                 callback: function (text) {
                     $('#slug').val(text);
                 }
             });
+
+        // ckeditor config
+        CKEDITOR.config.height = 400;
+        CKEDITOR.config.width = 'auto';
+        CKEDITOR.replace('body');
         });
-    </script>
+</script>
 @endsection

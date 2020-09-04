@@ -29,8 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {   
-        $categories =  Category::orderBy('title','ASC')->pluck('title','id');
-        $tags = Tag::orderBy('title', 'ASC')->get(); 
+        $categories = Category::orderBy('title','ASC')->pluck('title','id');
+        $tags       = Tag::orderBy('title', 'ASC')->get(); 
 
         return view('admin.posts.create', compact('categories','tags'));
     }
@@ -43,7 +43,6 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {   
-        // dd($request->all());
         $post = Post::create($request->all());
 
         alert('Entrada creada con éxito');

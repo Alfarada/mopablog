@@ -14,6 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
+            // primary key
             $table->id();
 
             // foreign key user_id
@@ -28,7 +29,7 @@ class CreatePostsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            // field data
+            // fields data
             $table->string('title');
             $table->string('slug');
             $table->mediumText('excerpt');

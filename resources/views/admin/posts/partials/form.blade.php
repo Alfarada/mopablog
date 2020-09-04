@@ -1,10 +1,17 @@
+
+{{ Form::hidden('user_id', auth()->user()->id ) }}
+
+<div class="form-group">
+    {{ Form::label('category_id', 'Categorías') }}
+    {{ Form::select('category_id', $categories, null, [ 'class' => 'form-control'])}}
+</div>
 <div class="form-group">
     {{ Form::label('title', 'Nombre de la entrada')}}
     {{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title'] ) }}
 </div>
 <div class="form-group">
     {{ Form::label('slug', 'URL Amigable')}}
-    {{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug'] ) }}
+    {{ Form::text('slug', null, ['class' => 'form-control','disabled' => 'disabled', 'id' => 'slug'] ) }}
 </div>
 <div class="form-group">
     {{ Form::label('body', 'Descripción')}}

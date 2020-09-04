@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Post;
+use App\{Tag,Post,Category};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{PostStoreRequest, PostUpdateRequest};
 
@@ -15,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'DESC')->paginate();
+        $posts = Post::orderBy('id', 'DESC')
+            ->where('user_id', auth()->user()->id)
+            ->paginate();
 
         return view('admin.posts.index', ['posts' => $posts]);
     }
@@ -26,8 +28,11 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.posts.create');
+    {   
+        $categories =  Category::orderBy('title','ASC')->pluck('title','id');
+        $tags = Tag::orderBy('title', 'ASC')->get(); 
+
+        return view('admin.posts.create', compact('categories','tags'));
     }
 
     /**
@@ -66,10 +71,12 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $post = Post::find($id);
+    {   
+        $categories =  Category::orderBy('title','ASC')->pluck('title','id');
+        $tags       = Tag::orderBy('title', 'ASC')->get(); 
+        $post       = Post::find($id);
 
-        return view('admin.posts.edit', ['post' => $post]);
+        return view('admin.posts.edit', compact('categories','tags','post'));
     }
 
     /**

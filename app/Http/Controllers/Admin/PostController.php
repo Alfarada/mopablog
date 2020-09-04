@@ -69,6 +69,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $this->authorize('pass', $post);
 
         return view('admin.posts.show', ['post' => $post]);
     }
@@ -80,10 +81,12 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+        $post = Post::find($id);
+        $this->authorize('pass', $post);
+
         $categories =  Category::orderBy('title', 'ASC')->pluck('title', 'id');
         $tags       = Tag::orderBy('title', 'ASC')->get();
-        $post       = Post::find($id);
 
         return view('admin.posts.edit', compact('categories', 'tags', 'post'));
     }
@@ -98,6 +101,7 @@ class PostController extends Controller
     public function update(PostUpdateRequest $request, $id)
     {
         $post = Post::find($id);
+        $this->authorize('pass', $post);
         $post->fill($request->all())->save();
 
         // Image
@@ -123,7 +127,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Post::find($id)->delete();
+        $post = Post::find($id);
+        $this->authorize('pass', $post);
+        $post->delete();
 
         alert('Entrada eliminada correctamente');
 

@@ -10,7 +10,7 @@
             </div>
             <div class="card-body">
                 @if($post->file)
-                <img src="{{ $post->file }}" class="img-responsive card-img-top" alt="{{ $post->name }}">
+                <img src="{{ $post->file }}" class="img-responsive card-img-top" alt="{{ $post->title }}">
                 @endif
                 <p class="card-text">
                     {{ $post->excerpt }}

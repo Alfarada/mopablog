@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <p><strong>Nombre :</strong> {{ $post->title }}</p>
                             <p><strong>Slug :</strong>   {{ $post->slug }}</p>
-                            <p><strong>Contenido :</strong>   {{ $post->body }}</p>
+                            <p><strong>Contenido :</strong>   {!! $post->body !!}</p>
                         </div>
                     </div>
                 </div>

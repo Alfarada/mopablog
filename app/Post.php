@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {   
@@ -27,4 +28,5 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
 }

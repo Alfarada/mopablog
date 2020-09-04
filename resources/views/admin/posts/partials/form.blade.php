@@ -21,8 +21,8 @@
 
 {{-- Img field --}}
 <div class="form-group">
-    {{ Form::label('image', 'Imagen')}}
-    {{ Form::file('image', null, ['class' => 'form-control', 'id' => 'image'] ) }}
+    {{ Form::label('file', 'Imagen')}}
+    {{ Form::file('file') }}
 </div>
 
 {{-- Radio Buttons --}}

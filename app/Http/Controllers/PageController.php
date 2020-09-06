@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {   
-    protected $pagination = 3;
+    protected $pagination = 6;
     
     public function blog()
     {
         $posts = Post::orderBy('id', 'DESC')
-            ->where('status', 'PUBLISHED')->paginate(3);
+            ->where('status', 'PUBLISHED')
+            ->paginate($this->pagination);
 
         return view('web.posts', ['posts' => $posts]);
     }
@@ -34,7 +35,7 @@ class PageController extends Controller
         })
         ->orderBy('id','DESC')
         ->where('status','PUBLISHED')
-        ->paginate(3);
+        ->paginate($this->pagination);
 
         return view('web.posts', compact('posts'));
     }

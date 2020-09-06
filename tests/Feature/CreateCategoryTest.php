@@ -3,10 +3,8 @@
 namespace Tests\Feature;
 
 use App\Category;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\BrowserTestCase;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateCategoryTest extends BrowserTestCase
 {
@@ -14,8 +12,8 @@ class CreateCategoryTest extends BrowserTestCase
 
     public function test_a_user_create_a_category()
     {
-        // Having
-        
+        // Having     
+
         $user = $this->defaultUser([
             'name' => 'lorem ipsum'
         ]);
@@ -46,6 +44,5 @@ class CreateCategoryTest extends BrowserTestCase
             'body' => $category->body
         ]);
 
-        
     }
 }

@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('id', 'DESC')
             ->where('user_id', auth()->user()->id)
-            ->paginate();
+            ->paginate(6);
 
         return view('admin.posts.index', ['posts' => $posts]);
     }

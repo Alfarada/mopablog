@@ -54,10 +54,12 @@
                         </li>
                         @endif
                         @else
-                        <li class="nav-item"><a class="nav-link" href=" {{ route('tags.index') }}">Etiquetas</a></li>
-                        <li class="nav-item"><a class="nav-link" href=" {{ route('categories.index') }}">Categorias</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href=" {{ route('posts.index') }}">Entradas</a></li>
+                            @if (auth()->user()->isAdmin())
+                                <li class="nav-item"><a class="nav-link" href=" {{ route('tags.index') }}">Etiquetas</a></li>
+                                <li class="nav-item"><a class="nav-link" href=" {{ route('categories.index') }}">Categorías</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href=" {{ route('posts.index') }}">Entradas</a></li>
+                            @endif
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -83,7 +85,7 @@
         </nav>
         {{-- Error message  --}}
 
-          @if ($errors->any())
+        @if ($errors->any())
         <div class="container mt-3">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
@@ -91,7 +93,7 @@
                         <p><strong>Por favor corrige los siguientes errores:</strong></p>
                         <ul>
                             @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                            <li>{{ $error }}</li>
                             @endforeach
                         </ul>
                     </div>

@@ -14,8 +14,9 @@ class CreateCategoryTest extends BrowserTestCase
     {
         // Having     
 
-        $user = $this->defaultUser([
-            'name' => 'lorem ipsum'
+        $admin = $this->defaultUser([
+            'name' => 'lorem ipsum',
+            'admin' => true
         ]);
 
         $category = factory(Category::class)->make([
@@ -24,7 +25,7 @@ class CreateCategoryTest extends BrowserTestCase
             'body' => 'category body'
         ]);
 
-        $this->actingAs($user);
+        $this->actingAs($admin);
         
         // When
 

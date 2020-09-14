@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Routes that require autentication.
+/**
+ * routes that require authentication and administrator status
+ */
 
-Route::resource('tags', 'Admin\TagController');
+Route::resource('tags', 'TagController');
 
-Route::resource('categories', 'Admin\CategoryController');
+Route::resource('categories', 'CategoryController');
 
-Route::resource('posts', 'Admin\PostController');
+Route::resource('posts', 'PostController');

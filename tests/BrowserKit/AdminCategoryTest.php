@@ -1,19 +1,18 @@
-<?php
+<?php 
 
-namespace Tests\Feature;
+namespace Tests\BrowserKit;
 
 use App\Category;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CreateCategoryTest extends BrowserTestCase
+class AdminCategoryTest extends BrowserTestCase
 {
     use RefreshDatabase;
 
     public function test_a_user_create_a_category()
     {
         // Having     
-
         $admin = $this->defaultUser([
             'name' => 'lorem ipsum',
             'admin' => true
@@ -28,7 +27,6 @@ class CreateCategoryTest extends BrowserTestCase
         $this->actingAs($admin);
         
         // When
-
         $this->visit('categories/create')
             ->see('Crear categoría')
             ->type($category->title,'title')
@@ -37,8 +35,7 @@ class CreateCategoryTest extends BrowserTestCase
             ->press('Guardar')
             ->see('Categoría creada con éxito');
 
-        // Expect
-                
+        // Expect          
         $this->seeInDatabase('categories', [
             'title' => $category->title,
             'slug' => $category->slug,

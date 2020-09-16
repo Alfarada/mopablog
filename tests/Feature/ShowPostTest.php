@@ -33,7 +33,7 @@ class ShowPostTest extends BrowserTestCase
 
         // visit("/entrada/{$post->slug}")
         $this->actingAs($admin)
-            ->visit(route('posts.show', $post))
+            ->visit(route('posts.show', [$post->id, $post->slug]))
             ->assertResponseOk()
             ->see($post->title)
             ->see($post->file)

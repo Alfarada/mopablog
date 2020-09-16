@@ -20,7 +20,9 @@ class PageController extends Controller
 
     public function category($slug)
     {
-        $posts = Category::where('slug', $slug)->first()->posts()
+        $posts = Category::where('slug', $slug)
+            ->first()
+            ->posts()
             ->orderBy('id', 'DESC')
             ->where('status', 'PUBLISHED')
             ->paginate($this->pagination);

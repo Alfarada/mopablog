@@ -15,32 +15,29 @@ class ShowPostTest extends BrowserTestCase
     {   
         // Having
 
-        $category = factory(Category::class)->create([
-            'title' => 'category title'
+        $admin = $this->defaultUser([
+            'name' => 'lorem ipsum',
+            'admin' => true
         ]);
 
         $post = factory(Post::class)->make([
-            'title' => 'post title',
+           'title' => 'titulo del post',
+           'excerpt' => 'extracto del post',
+           'body' => 'cuerpo del post', 
         ]);
-
-        $category->posts()->save($post);
-
-        $tag = factory(Tag::class)->make([
-            'title' => 'tag title'
-        ]);
-
-        $post->tags()->save($tag);
         
+        $admin->posts()->save($post);
+
         // Expected
 
-        $this->visit("/entrada/{$post->slug}")
+        // visit("/entrada/{$post->slug}")
+        $this->actingAs($admin)
+            ->visit(route('posts.show', $post))
             ->assertResponseOk()
             ->see($post->title)
             ->see($post->file)
             ->see($post->excerpt)
-            ->see($post->body)
-            ->see($category->title)
-            ->see($tag->title);
+            ->see($post->body);
        
     }
 }

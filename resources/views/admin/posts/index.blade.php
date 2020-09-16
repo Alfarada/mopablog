@@ -6,9 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0"> Lista de Entradas 
+                    {{-- <h5 class="card-title mb-0"> Lista de Entradas 
                         <a class="btn btn-sm btn-primary float-right"
-                            href=" {{ route('posts.create') }}">crear</a></h5>
+                            href=" {{ route('posts.create') }}">crear</a></h5> --}}
                 </div>
                 <div class="card-body">
                     <table class="table table-light">
@@ -33,18 +33,18 @@
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    <a href=" {{ route('posts.edit', $post->id) }}"
+                                    {{-- <a href=" {{ route('posts.edit', $post->id) }}"
                                         class="btn btn-sm btn-light">
                                         editar
-                                    </a>
+                                    </a> --}}
                                 </td>
                                 <td with="10px">
-                                    {!! Form::open(['route' => ['posts.destroy', $post->id ], 'method' =>
+                                    {{-- {!! Form::open(['route' => ['posts.destroy', $post->id ], 'method' =>
                                     'DELETE']) !!}
 
                                     <button class="btn btn-sm btn-danger"> Eliminar</button>
 
-                                    {!! Form::close()!!}
+                                    {!! Form::close()!!} --}}
                                 </td>
                             </tr>
                             @endforeach

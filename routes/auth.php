@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -10,4 +11,8 @@ Route::resource('tags', 'TagController');
 
 Route::resource('categories', 'CategoryController');
 
-Route::resource('posts', 'PostController');
+// RUTA TEMPORALMENTE DESHABILITADA
+// Route::resource('posts', 'PostController');
+Route::get('posts', 'PostController@index')->name('posts.index');
+Route::get('posts/create', 'PostController@create')->name('posts.create');
+Route::get('posts/{post}', 'PostController@show')->name('posts.show')->where('post','\d+');

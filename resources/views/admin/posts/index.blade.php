@@ -6,9 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{-- <h5 class="card-title mb-0"> Lista de Entradas 
+                    <h5 class="card-title mb-0"> Lista de Entradas 
                         <a class="btn btn-sm btn-primary float-right"
-                            href=" {{ route('posts.create') }}">crear</a></h5> --}}
+                            {{-- href=" {{ route('posts.create') }}" --}}
+                            >
+                            Crear post 
+                        </a></h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-light">

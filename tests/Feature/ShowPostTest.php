@@ -27,7 +27,8 @@ class ShowPostTest extends BrowserTestCase
         ]);
         
         $admin->posts()->save($post);
-
+        
+        //dd(route('posts.show', $post));
         // Expected
 
         // visit("/entrada/{$post->slug}")

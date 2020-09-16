@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\{Category,Post,Tag};
+use App\{Category, Post, Tag};
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -12,7 +12,7 @@ class ShowPostTest extends BrowserTestCase
 
     /** @test */
     public function user_can_see_a_post_details()
-    {   
+    {
         // Having
 
         $admin = $this->defaultUser([
@@ -21,24 +21,70 @@ class ShowPostTest extends BrowserTestCase
         ]);
 
         $post = factory(Post::class)->make([
-           'title' => 'titulo del post',
-           'excerpt' => 'extracto del post',
-           'body' => 'cuerpo del post', 
+            'title' => 'titulo del post',
+            'excerpt' => 'extracto del post',
+            'body' => 'cuerpo del post',
         ]);
-        
-        $admin->posts()->save($post);
-        
-        //dd(route('posts.show', $post));
-        // Expected
 
-        // visit("/entrada/{$post->slug}")
+        $admin->posts()->save($post);
+
+        // Expected
         $this->actingAs($admin)
-            ->visit(route('posts.show', [$post->id, $post->slug]))
+            ->visit($post->url)
             ->assertResponseOk()
             ->see($post->title)
             ->see($post->file)
             ->see($post->excerpt)
             ->see($post->body);
-       
+    }
+
+    function test_old_urls_are_redirected()
+    {
+        // Having
+
+        $admin = $this->defaultUser([
+            'admin' => true
+        ]);
+
+        $post = factory(Post::class)->make([
+            'title' => 'old title'
+        ]);
+
+        $admin->posts()->save($post);
+
+        $url = $post->url;
+
+        $post->update(['title' => 'New title']);
+
+        $this->actingAs($admin)
+            ->visit($url)
+            ->seePageIs($post->url);
+    }
+
+    function test_post_url_with_wrong_slugs_still_work()
+    {
+        $this->markTestSkipped();
+        // Having
+
+        $admin = $this->defaultUser([
+            'admin' => true
+        ]);
+
+        $post = factory(Post::class)->make([
+            'title' => 'old title'
+        ]);
+
+        $admin->posts()->save($post);
+
+        $url = $post->url;
+
+        $post->update(['title' => 'New title']);
+
+        // dd($url);
+
+        $this->actingAs($admin)
+            ->visit($url)
+            ->assertResponseStatus(404)
+            ->see('New title');
     }
 }

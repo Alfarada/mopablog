@@ -66,9 +66,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post, $slug)
     {
         //$this->authorize('pass', $post);
+
+        if ($post->slug != $slug) {
+            return redirect($post->url, 301);
+        }
 
         return view('admin.posts.show', ['post' => $post]);
     }

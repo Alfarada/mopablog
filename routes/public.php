@@ -18,8 +18,8 @@ Auth::routes();
 
 Route::get('blog', 'PageController@blog')->name('blog');
 Route::get('entrada/{slug}', 'PageController@post')->name('post');
-Route::get('categoria/{slug}', 'PageController@category')->name('category');
-Route::get('etiqueta/{slug}', 'PageController@tag')->name('tag');
+// Route::get('categoria/{slug}', 'PageController@category')->name('category');
+// Route::get('etiqueta/{slug}', 'PageController@tag')->name('tag');
 
 
 

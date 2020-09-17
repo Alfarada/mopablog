@@ -38,12 +38,16 @@
 
 {{-- Checkboxs --}}
 <div class="form-group">
-    {{ Form::label('tags', 'Etiquetas') }}
+    {{ Form::label('tags', 'Etiquetas',['class' => 'tags']) }}
 
     <div class="container">
         @foreach ($tags as $tag)
-        <label>
-            {{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->title }}
+        <label>     
+            <input  class="checkbox"
+                    type="checkbox"
+                    name="tags[]"
+                    value="{{ $tag->id }}">
+                    {{ $tag->title }}
         </label>
         @endforeach
     </div>
@@ -52,7 +56,7 @@
 {{-- Excerpt field --}}
 <div class="form-group">
     {{ Form::label('excerpt', 'Extracto')}}
-    {{ Form::textarea('excerpt', null, ['class' => 'form-control', 'rows' => '2'] ) }}
+    {{ Form::textarea('excerpt', null, ['class' => 'form-control', 'dusk' => 'excerpt', 'rows' => '2'] ) }}
 </div>
 
 {{-- Body field --}}
@@ -78,9 +82,9 @@
             });
 
         // ckeditor config
-        CKEDITOR.config.height = 400;
-        CKEDITOR.config.width = 'auto';
-        CKEDITOR.replace('body');
+        // CKEDITOR.config.height = 400;
+        // CKEDITOR.config.width = 'auto';
+        // CKEDITOR.replace('body');
         });
 </script>
 @endsection

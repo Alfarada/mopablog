@@ -28,13 +28,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     $categories = Category::orderBy('title', 'ASC')->pluck('title', 'id');
-    //     $tags       = Tag::orderBy('title', 'ASC')->get();
+    public function create()
+    {
+        $categories = Category::orderBy('title', 'ASC')->pluck('title', 'id');
+        $tags       = Tag::orderBy('title', 'ASC')->get();
 
-    //     return view('admin.posts.create', compact('categories', 'tags'));
-    // }
+        return view('admin.posts.create', compact('categories', 'tags'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,23 +42,23 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(PostStoreRequest $request)
-    // {
-    //     $post = Post::create($request->all());
+    public function store(PostStoreRequest $request)
+    {
+        $post = Post::create($request->all());
 
-    //     // IMAGE
-    //     if ($request->file('file')) {
-    //         $path = Storage::disk('public')->put('image', $request->file('file'));
-    //         $post->fill(['file' => asset($path)])->save();
-    //     }
+        // IMAGE
+        if ($request->file('file')) {
+            $path = Storage::disk('public')->put('image', $request->file('file'));
+            $post->fill(['file' => asset($path)])->save();
+        }
 
-    //     // Tags
-    //     $post->tags()->attach($request->get('tags'));
+        // Tags
+        $post->tags()->attach($request->get('tags'));
 
-    //     alert('Entrada creada con éxito');
+        alert('Entrada creada con éxito');
 
-    //     return redirect()->route('posts.edit', $post->id);
-    // }
+        return redirect()->route('posts.show', [$post->id,$post->slug]);
+    }
 
     /**
      * Display the specified resource.
@@ -83,16 +83,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function edit($id)
-    // {   
-    //     $post = Post::find($id);
-    //     $this->authorize('pass', $post);
+    public function edit(Post $post)
+    {   
+        // $post = Post::find($id);
+        // $this->authorize('pass', $post);
 
-    //     $categories =  Category::orderBy('title', 'ASC')->pluck('title', 'id');
-    //     $tags       = Tag::orderBy('title', 'ASC')->get();
+        $categories =  Category::orderBy('title', 'ASC')->pluck('title', 'id');
+        $tags       = Tag::orderBy('title', 'ASC')->get();
 
-    //     return view('admin.posts.edit', compact('categories', 'tags', 'post'));
-    // }
+        return view('admin.posts.edit', compact('post','categories','tags'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -101,26 +101,26 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(PostUpdateRequest $request, $id)
-    // {
-    //     $post = Post::find($id);
-    //     $this->authorize('pass', $post);
-    //     $post->fill($request->all())->save();
+    public function update(PostUpdateRequest $request, Post $post)
+    {
+        // $post = Post::find($post->id);
+        //$this->authorize('pass', $post);
+        $post->fill($request->all())->save();
 
-    //     // Image
-    //     if ($request->file('file')) {
+        // Image
+        if ($request->file('file')) {
 
-    //         $path = Storage::disk('public')->put('image', $request->file('file'));
-    //         $post->fill(['file' => asset($path)])->save();
-    //     }
+            $path = Storage::disk('public')->put('image', $request->file('file'));
+            $post->fill(['file' => asset($path)])->save();
+        }
 
-    //     // Tags
-    //     $post->tags()->sync($request->get('tags'));
+        // Tags
+        $post->tags()->sync($request->get('tags'));
 
-    //     alert('Entrada actualizada con exito');
+        alert('Entrada actualizada con exito');
 
-    //     return redirect()->route('posts.edit', $post->id);
-    // }
+        return redirect()->route('posts.show', [$post->id, $post->slug]);
+    }
 
     /**
      * Remove the specified resource from storage.

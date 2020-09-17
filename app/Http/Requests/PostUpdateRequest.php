@@ -13,14 +13,14 @@ class PostUpdateRequest extends FormRequest
 
     public function rules()
     {
-        $rules =  [
+        $rules = [
             'user_id'    => 'required|integer',
             'category_id'=> 'required|integer',
             'title'      => 'required',
-            'slug'       => 'required|unique:posts,slug,' . $this->post,
+            'slug'       => 'required|unique:posts,slug,'.$this->post,
             'tags'       => 'required|array',
             'status'     => 'required|in:DRAFT,PUBLISHED',
-            'excerpt'    => 'required',
+            // 'excerpt'    => 'required',
             'body'       => 'required'
         ];
 

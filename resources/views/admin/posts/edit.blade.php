@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::model($post, [
-                        'route' => ['posts.update', $post->id],
+                        'route' => ['posts.update',[$post->id,$post->slug]],
                         'method' => 'PUT','files' => true
                     ]) !!}
 

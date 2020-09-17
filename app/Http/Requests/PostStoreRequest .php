@@ -20,7 +20,7 @@ class PostStoreRequest extends FormRequest
                 'slug'       => 'required|unique:posts,slug',
                 'tags'       => 'required|array',
                 'status'     => 'required|in:DRAFT,PUBLISHED',
-                'excerpt'    => 'required',
+                // 'excerpt'    => 'required',
                 'body'       => 'required'
         ];
 

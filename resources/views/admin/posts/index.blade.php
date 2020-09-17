@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <h5 class="card-title mb-0"> Lista de Entradas 
                         <a class="btn btn-sm btn-primary float-right"
-                            {{-- href=" {{ route('posts.create') }}" --}}
+                            href=" {{ route('posts.create') }}"
                             >
                             Crear post 
                         </a></h5>
@@ -36,10 +36,10 @@
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    {{-- <a href=" {{ route('posts.edit', $post->id) }}"
+                                    <a href="{{ route('posts.edit', [$post->id, $post->slug]) }}"
                                         class="btn btn-sm btn-light">
                                         editar
-                                    </a> --}}
+                                    </a>
                                 </td>
                                 <td with="10px">
                                     {{-- {!! Form::open(['route' => ['posts.destroy', $post->id ], 'method' =>

@@ -12,6 +12,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'lorem ipsum',
             'email' => 'lorem@ipsum.com',
+            'admin' => true,
             'password' => bcrypt('laravel')
         ]);
 

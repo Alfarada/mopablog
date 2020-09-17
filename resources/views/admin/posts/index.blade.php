@@ -30,6 +30,7 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td with="10px">
+                                    {{-- Show post Link --}}
                                     <a  id="ver"
                                         href=" {{ route('posts.show', [$post->id, $post->slug]) }}"
                                         class="btn btn-sm btn-light">
@@ -37,19 +38,21 @@
                                     </a>
                                 </td>
                                 <td with="10px">
+                                    {{-- Update post link  --}}
                                     <a href="{{ route('posts.edit', [$post->id, $post->slug]) }}"
                                         class="btn btn-sm btn-light">
                                         editar
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    {{-- {!! Form::open(['route' => ['posts.destroy', $post->id ], 'method' =>
-                                    'DELETE']) !!}
+                                    {!! Form::open([
+                                        'route' => ['posts.destroy', $post],
+                                        'method' => 'DELETE']) !!}
 
-                                    <button class="btn btn-sm btn-danger"> Eliminar</button>
+                                        <button class="destroy btn btn-sm btn-danger"> Eliminar </button>
 
-                                    {!! Form::close()!!} --}}
-                                </td>
+                                    {!! Form::close()!!}
+                            </td>
                             </tr>
                             @endforeach
                         </tbody>

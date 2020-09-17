@@ -128,14 +128,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     $post = Post::find($id);
-    //     $this->authorize('pass', $post);
-    //     $post->delete();
+    public function destroy(Post $post)
+    {   
+        // $post = Post::find($post->id);
+        // $this->authorize('pass', $post);
+        $post->delete();
 
-    //     alert('Entrada eliminada correctamente');
+        alert('Post eliminado con éxito.');
 
-    //     return back();
-    // }
+        return back();
+    }
 }

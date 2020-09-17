@@ -2,13 +2,11 @@
 
 namespace Tests\Browser;
 
-use App\Category;
-use App\Post;
-use App\Tag;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Browser;
-use Tests\DuskTestCase;
 use Tests\TestHelpers;
+use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
+use App\{Post,Category,Tag};
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class AdminUpdatePostTest extends DuskTestCase
 {
@@ -37,7 +35,6 @@ class AdminUpdatePostTest extends DuskTestCase
                 ->type('@excerpt', 'post excerpt')
                 ->type('#body', 'post content')
                 ->press('Guardar');
-
 
             $this->assertDatabaseHas('posts', [
                 'user_id' => $admin->id,

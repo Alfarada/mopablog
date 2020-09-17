@@ -1,8 +1,10 @@
-<?php 
+<?php
 
 namespace Tests\BrowserKit;
 
+use App\Category;
 use App\Post;
+use App\Tag;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -24,7 +26,7 @@ class AdminPostTest extends BrowserTestCase
     }
 
     function test_its_admin_can_load_detail_page()
-    {      
+    {
         $admin = $this->defaultUser(['admin' => true]);
         $post = $this->defaultPost();
 
@@ -38,7 +40,7 @@ class AdminPostTest extends BrowserTestCase
     }
 
     function test_its_admin_can_see_the_details_of_posts()
-    {   
+    {
         // Having
         $admin = $this->defaultUser(['admin' => true]);
         $post = $this->defaultPost([
@@ -49,7 +51,7 @@ class AdminPostTest extends BrowserTestCase
             'excerpt' => 'post-excerpt',
             'body' => 'post content'
         ]);
-        
+
         // When - Expect
         $this->actingAs($admin)
             ->visit($post->url)
@@ -60,4 +62,27 @@ class AdminPostTest extends BrowserTestCase
             ->see($post->excerpt)
             ->see($post->body);
     }
+
+    // function test_admin_create_a_post()
+    // {
+    //     $admin = $this->defaultUser(['admin' => true]);
+
+    //     $category = factory(Category::class)
+    //         ->create(['title' => 'category tite']);
+
+    //     factory(Tag::class)->create(['title' => 'tag title']);
+
+    //     $this->actingAs($admin)
+    //         ->visitRoute('posts.create')
+    //         ->select($category->id, 'category_id')
+    //         ->type('post title', 'title')
+    //         ->select('PUBLISHED', 'status')
+    //         ->type('excerpt post', 'excerpt')
+    //         ->type('post content', 'body')
+    //         ->submitForm('Guardar', [
+    //             'tags[0]' => 1
+    //         ]);
+
+    //     $this->assertSame(1, Post::first());
+    // }
 }

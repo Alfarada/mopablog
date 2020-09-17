@@ -4,7 +4,7 @@
 {{-- Category select --}}
 <div class="form-group">
     {{ Form::label('category_id', 'Categorías') }}
-    {{ Form::select('category_id', $categories, null, ['class' => 'form-control'])}}
+    {{ Form::select('category_id',$categories,null, ['class' => 'form-control','name' => 'category_id'])}}
 </div>
 
 {{-- Post field --}}
@@ -43,7 +43,8 @@
     <div class="container">
         @foreach ($tags as $tag)
         <label>     
-            <input  class="checkbox"
+            <input  id="checkbox"
+                    class="checkbox"
                     type="checkbox"
                     name="tags[]"
                     value="{{ $tag->id }}">

@@ -24,7 +24,7 @@ class AdminCreatePostTest extends DuskTestCase
 
             $browser->loginAs($admin)
                 ->visitRoute('posts.create')
-                ->assertSee('Crear Entrada')
+                ->assertSee('Crear un nuevo post')
                 ->select('category_id', $category->title)
                 ->type('title', 'new title')
                 ->radio('status', 'PUBLISHED')

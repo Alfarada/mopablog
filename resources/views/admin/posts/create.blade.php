@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0"> Crear Entrada </h5>
+                    <h5 class="card-title mb-0"> Crear un nuevo post </h5>
                 </div>
                 <div class="card-body">
                     {!! Form::open(['route' => 'posts.store', 'files' => true]) !!}

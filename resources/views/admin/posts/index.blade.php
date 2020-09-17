@@ -30,7 +30,8 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td with="10px">
-                                    <a href=" {{ route('posts.show', [$post->id, $post->slug]) }}"
+                                    <a  id="ver"
+                                        href=" {{ route('posts.show', [$post->id, $post->slug]) }}"
                                         class="btn btn-sm btn-light">
                                         ver
                                     </a>

@@ -7,12 +7,13 @@
                 <div class="card">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title mb-0"> Ver Entradas </h5>
+                            <h5 class="card-title mb-0"> Detalles del post </h5>
                         </div>
                         <div class="card-body">
                             <p><strong>Nombre :</strong> {{ $post->title }}</p>
                             <p><strong>Slug :</strong>   {{ $post->slug }}</p>
                             <p><strong>Imagen :</strong> {{ $post->file }}</p>
+                            <p><strong>Estado :</strong> {{ $post->status }}</p>
                             <p><strong>Extracto :</strong> {{ $post->excerpt }}</p>
                             <p><strong>Contenido :</strong> {!! $post->body !!}</p>
                         </div>

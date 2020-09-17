@@ -18,6 +18,11 @@ trait TestHelpers
         return $this->defaultUser = factory(User::class)->create($attributes);
     }
 
+    public function adminUser(array $attributes = [])
+    {
+        return $this->defaultUser = factory(User::class)->create($attributes);
+    }
+
     public function defaultPost( array $attributes = [])
     {
         return $this->defaultPost = factory(Post::class)->create($attributes);

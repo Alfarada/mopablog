@@ -8,11 +8,9 @@ use Illuminate\Support\Str;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
-        //'user_id' => rand(1, 30),
         'user_id' => function () {
             return factory(User::class)->create()->id;    
         },
-        // 'category_id'=> rand(1, 20),
         'category_id' => function () {
             return factory(Category::class)->create()->id;
         },

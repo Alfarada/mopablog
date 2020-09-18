@@ -1,6 +1,5 @@
 <?php
 
-use App\Post;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -9,11 +8,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('tags', 'TagController');
 
-Route::resource('categories', 'CategoryController');
+// Route::resource('categories', 'CategoryController');
+//CRUD CATEGORY ROUTES
 
-// RUTA TEMPORALMENTE DESHABILITADA
-// Route::resource('posts', 'PostController');
+Route::get('category', 'CategoryController@index')->name('categories.index');
 
+// Route::get('category/create', 'CategoryController@create')->name('categories.create');
+
+// CRUD  POST ROUTES 
 Route::get('posts', 'PostController@index')->name('posts.index');
 
 Route::get('posts/{post}-{slug}', 'PostController@show')->name('posts.show')->where('post','\d+');

@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         $categories = Category::orderBy('id', 'DESC')->paginate();
 
-        return view('admin.categories.index', ['categories' => $categories]);
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -25,10 +25,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.categories.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin.categories.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -36,15 +36,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryStoreRequest $request)
-    {   
-        // dd($request->all());
-        $category = Category::create($request->all());
+    // public function store(CategoryStoreRequest $request)
+    // {   
+    //     // dd($request->all());
+    //     $category = Category::create($request->all());
 
-        alert('Categoría creada con éxito');
+    //     alert('Categoría creada con éxito');
 
-        return redirect()->route('categories.edit', $category->id);
-    }
+    //     return redirect()->route('categories.edit', $category->id);
+    // }
 
     /**
      * Display the specified resource.
@@ -52,12 +52,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $category = Category::find($id);
-
-        return view('admin.categories.show', ['category' => $category]);
-    }
+    // public function show($id)
+    // {
+    //     $category = Category::find($id);
+        
+    //     return view('admin.categories.show', ['category' => $category]);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -65,12 +65,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $category = Category::find($id);
+    // public function edit($id)
+    // {
+    //     $category = Category::find($id);
 
-        return view('admin.categories.edit', ['category' => $category]);
-    }
+    //     return view('admin.categories.edit', ['category' => $category]);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -79,16 +79,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryUpdateRequest $request, $id)
-    {
-        $category = Category::find($id);
+    // public function update(CategoryUpdateRequest $request, $id)
+    // {
+    //     $category = Category::find($id);
 
-        $category->fill($request->all())->save();
+    //     $category->fill($request->all())->save();
 
-        alert('Categoría actualizada con exito');
+    //     alert('Categoría actualizada con exito');
 
-        return redirect()->route('categories.edit', $category->id);
-    }
+    //     return redirect()->route('categories.edit', $category->id);
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -96,12 +96,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        Category::find($id)->delete();
+    // public function destroy($id)
+    // {
+    //     Category::find($id)->delete();
 
-        alert('Categoría eliminada correctamente');
+    //     alert('Categoría eliminada correctamente');
 
-        return back();
-    }
+    //     return back();
+    // }
 }

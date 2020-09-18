@@ -8,7 +8,8 @@
                 <div class="card-header">
                     <h5 class="card-title mb-0"> Lista de Categorías 
                         <a class="btn btn-sm btn-primary float-right"
-                            href=" {{ route('categories.create') }}">crear</a></h5>
+                            {{-- href=" {{ route('categories.create') }}" --}}
+                            >crear</a></h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-light">
@@ -27,24 +28,26 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->title }}</td>
                                 <td with="10px">
-                                    <a href="{{ route('categories.show', $category->id) }}"
+                                    <a 
+                                    {{-- href="{{ route('categories.show', $category->id) }}" --}}
                                         class="btn btn-sm btn-light">
                                         ver
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    <a href=" {{ route('categories.edit', $category->id) }}"
+                                    <a 
+                                    {{-- href=" {{ route('categories.edit', $category->id) }}" --}}
                                         class="btn btn-sm btn-light">
                                         editar
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    {!! Form::open(['route' => ['categories.destroy', $category->id ], 'method' =>
+                                    {{-- {!! Form::open(['route' => ['categories.destroy', $category->id ], 'method' =>
                                     'DELETE']) !!}
 
                                     <button class="btn btn-sm btn-danger"> Eliminar</button>
 
-                                    {!! Form::close()!!}
+                                    {!! Form::close()!!} --}}
                                 </td>
                             </tr>
                             @endforeach

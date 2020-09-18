@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Tests\BrowserKit;
 
@@ -10,7 +10,24 @@ class AdminCategoryTest extends BrowserTestCase
 {
     use RefreshDatabase;
 
-    public function test_admin_create_a_category()
+    function test_admin_can_see_the_index_categories_page()
+    {   
+        // Having
+        $admin = $this->defaultUser(['admin' => true]);
+        $categoryA = factory(Category::class)->create(['title' => 'category A']);
+        $categoryB = factory(Category::class)->create(['title' => 'category B']);
+        $categoryC = factory(Category::class)->create(['title' => 'category C']);
+
+        // Then - Expect
+        $this->actingAs($admin)
+            ->visit(route('categories.index'))
+            ->see('Lista de Categorías')
+            ->see($categoryA->title)
+            ->see($categoryB->title)
+            ->see($categoryC->title);
+    }
+
+    function test_admin_create_a_category()
     {
         // Having     
         $admin = $this->defaultUser([
@@ -19,35 +36,35 @@ class AdminCategoryTest extends BrowserTestCase
         ]);
 
         $category = factory(Category::class)->make([
-            'title' => 'category title',
-            'slug' => 'category-title',
-            'body' => 'category body'
+            'title' => 'any cateogory title',
+            'slug' => 'any-category-title',
+            'body' => 'any category body'
         ]);
 
         $this->actingAs($admin);
-        
+
         // When
         $this->visit('categories/create')
             ->see('Crear categoría')
-            ->type($category->title,'title')
-            ->type($category->slug,'slug')
-            ->type($category->body,'body')
+            ->type($category->title, 'title')
+            ->type($category->slug, 'slug')
+            ->type($category->body, 'body')
             ->press('Guardar')
             ->see('Categoría creada con éxito');
 
         // Expect          
         $this->seeInDatabase('categories', [
+            'user_id' => $admin->id,
             'title' => 'category title',
             'slug' => 'category-title',
             'body' => 'category body'
         ]);
-
     }
 
     function test_the_admin_can_view_the_category_details()
-    {   
+    {
         $this->markTestIncomplete();
-        
+
         $admin = $this->defaultUser(['admin' => true]);
 
         $category = factory(Category::class)->make();

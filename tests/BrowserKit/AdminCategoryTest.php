@@ -27,6 +27,17 @@ class AdminCategoryTest extends BrowserTestCase
             ->see($categoryC->title);
     }
 
+    function test_administrator_can_load_the_page_to_create_category()
+    {
+        $admin = $this->adminUser();
+
+        $this->actingAs($admin)
+            ->visitRoute('categories.index')
+            ->assertResponseOk()
+            ->click('Crear categoría')
+            ->seePageIs(route('categories.create'));
+    }
+
     function test_admin_create_a_category()
     {   
         // Having     

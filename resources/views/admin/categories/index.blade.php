@@ -8,8 +8,8 @@
                 <div class="card-header">
                     <h5 class="card-title mb-0"> Lista de Categorías 
                         <a class="btn btn-sm btn-primary float-right"
-                            {{-- href=" {{ route('categories.create') }}" --}}
-                            >crear</a></h5>
+                            href=" {{ route('categories.create') }}"
+                            >Crear categoría</a></h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-light">

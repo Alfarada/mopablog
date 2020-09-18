@@ -30,7 +30,7 @@ class ShowPostTest extends BrowserTestCase
 
         // Expected
         $this->actingAs($admin)
-            ->visit($post->url)
+            ->visitRoute('posts.show', $post->values)
             ->assertResponseOk()
             ->see($post->title)
             ->see($post->file)
@@ -51,14 +51,17 @@ class ShowPostTest extends BrowserTestCase
         ]);
 
         $admin->posts()->save($post);
-
-        $url = $post->url;
+            
+        // This $url has the old url ass value
+        // route('posts.show',[$post->id,$post->slug])
+        $url = $post->url; 
 
         $post->update(['title' => 'New title']);
 
         $this->actingAs($admin)
             ->visit($url)
             ->seePageIs($post->url);
+        
     }
 
     function test_post_url_with_wrong_slugs_still_work()
@@ -79,9 +82,7 @@ class ShowPostTest extends BrowserTestCase
         $url = $post->url;
 
         $post->update(['title' => 'New title']);
-
-        // dd($url);
-
+        
         $this->actingAs($admin)
             ->visit($url)
             ->assertResponseStatus(404)

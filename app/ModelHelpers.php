@@ -14,4 +14,9 @@ trait ModelHelpers
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
+
+    public function getValuesAttribute()
+    {
+        return [$this->id, $this->slug];
+    }
 }

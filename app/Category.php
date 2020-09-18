@@ -12,4 +12,10 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    public function getUrlAttribute()
+    {
+        return route("categories.show", [$this->id, $this->slug]);
+    }
+
 }

@@ -19,7 +19,7 @@ class EditPostTest extends BrowserTestCase
         $admin = $this->defaultUser(['admin' => true]);
 
         $this->actingAs($admin)
-            ->visit(route('posts.edit', [$post->id, $post->slug]))
+            ->visitRoute('posts.edit', $post->values)
             ->assertResponseOk()
             ->type('edit title', 'title')
             ->press('Guardar');

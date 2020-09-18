@@ -33,6 +33,7 @@ class Post extends Model
 
     public function getUrlAttribute()
     {
-        return route('posts.show', [$this->id, $this->slug]);
+        return route("posts.show", [$this->id, $this->slug]);
     }
+
 }

@@ -5,14 +5,13 @@ namespace Tests\BrowserKit;
 use App\Category;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Routing\Route;
 
 class AdminCategoryTest extends BrowserTestCase
 {
     use RefreshDatabase;
 
     function test_admin_can_see_the_index_categories_page()
-    {   
+    {
         // Having
         $admin = $this->defaultUser(['admin' => true]);
         $categoryA = factory(Category::class)->create(['title' => 'category A']);
@@ -40,7 +39,7 @@ class AdminCategoryTest extends BrowserTestCase
     }
 
     function test_admin_create_a_category()
-    {   
+    {
         // Having     
         $admin = $this->defaultUser(['admin' => true]);
 
@@ -60,7 +59,7 @@ class AdminCategoryTest extends BrowserTestCase
             ->type($category->body, 'body')
             ->press('Guardar')
             ->see('Categoría creada con éxito');
-        
+
         // Expect          
         $this->seeInDatabase('categories', [
             'title' => $category->title,
@@ -70,7 +69,7 @@ class AdminCategoryTest extends BrowserTestCase
     }
 
     function test_the_admin_can_view_the_category_details()
-    { 
+    {
         $admin = $this->adminUser();
 
         $category = factory(Category::class)->create([
@@ -82,7 +81,7 @@ class AdminCategoryTest extends BrowserTestCase
         $this->actingAs($admin)
             ->visitRoute('categories.index')
             ->click('ver')
-            ->seePageIs(route('categories.show',[$category->id,$category->slug]))
+            ->seePageIs($category->url)
             ->see($category->title)
             ->see($category->slug)
             ->see($category->body);

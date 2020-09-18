@@ -28,12 +28,9 @@ class AdminCategoryTest extends BrowserTestCase
     }
 
     function test_admin_create_a_category()
-    {
+    {   
         // Having     
-        $admin = $this->defaultUser([
-            'name' => 'lorem ipsum',
-            'admin' => true
-        ]);
+        $admin = $this->defaultUser(['admin' => true]);
 
         $category = factory(Category::class)->make([
             'title' => 'any cateogory title',
@@ -51,13 +48,12 @@ class AdminCategoryTest extends BrowserTestCase
             ->type($category->body, 'body')
             ->press('Guardar')
             ->see('Categoría creada con éxito');
-
+        
         // Expect          
         $this->seeInDatabase('categories', [
-            'user_id' => $admin->id,
-            'title' => 'category title',
-            'slug' => 'category-title',
-            'body' => 'category body'
+            'title' => $category->title,
+            'slug' => $category->slug,
+            'body' => $category->body
         ]);
     }
 

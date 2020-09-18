@@ -25,10 +25,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     return view('admin.categories.create');
-    // }
+    public function create()
+    {
+        return view('admin.categories.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,15 +36,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(CategoryStoreRequest $request)
-    // {   
-    //     // dd($request->all());
-    //     $category = Category::create($request->all());
+    public function store(CategoryStoreRequest $request)
+    {   
+        // dd($request->all());
+        $category = Category::create($request->all());
 
-    //     alert('Categoría creada con éxito');
+        alert('Categoría creada con éxito');
 
-    //     return redirect()->route('categories.edit', $category->id);
-    // }
+        return redirect()->route('categories.show', [$category->id,$category->slug]);
+    }
 
     /**
      * Display the specified resource.
@@ -52,12 +52,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
-    //     $category = Category::find($id);
+    public function show(Category $category)
+    {
+        // $category = Category::find($id);
         
-    //     return view('admin.categories.show', ['category' => $category]);
-    // }
+        return view('admin.categories.show', compact('category'));
+    }
 
     /**
      * Show the form for editing the specified resource.

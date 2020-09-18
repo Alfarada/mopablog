@@ -11,9 +11,13 @@ Route::resource('tags', 'TagController');
 // Route::resource('categories', 'CategoryController');
 //CRUD CATEGORY ROUTES
 
-Route::get('category', 'CategoryController@index')->name('categories.index');
+Route::get('categories', 'CategoryController@index')->name('categories.index');
 
-// Route::get('category/create', 'CategoryController@create')->name('categories.create');
+Route::get('categories/{category}-{slug}', 'CategoryController@show')->name('categories.show');
+
+Route::get('categories/create', 'CategoryController@create')->name('categories.create');
+
+Route::post('categories', 'CategoryController@store')->name('categories.store');
 
 // CRUD  POST ROUTES 
 Route::get('posts', 'PostController@index')->name('posts.index');

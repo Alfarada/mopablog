@@ -5,6 +5,7 @@ namespace Tests\BrowserKit;
 use App\Category;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Routing\Route;
 
 class AdminCategoryTest extends BrowserTestCase
 {
@@ -69,21 +70,21 @@ class AdminCategoryTest extends BrowserTestCase
     }
 
     function test_the_admin_can_view_the_category_details()
-    {
-        $this->markTestIncomplete();
+    { 
+        $admin = $this->adminUser();
 
-        $admin = $this->defaultUser(['admin' => true]);
-
-        $category = factory(Category::class)->make();
-
+        $category = factory(Category::class)->create([
+            'title' => 'any category title',
+            'slug' => 'any-category-title',
+            'body' => 'any category content'
+        ]);
 
         $this->actingAs($admin)
-            ->visit('categories')
+            ->visitRoute('categories.index')
             ->click('ver')
-            //SE DEBERÍA PODER MOSTRAR TANTO EL ID COMO EL SLUG
-            ->seePageIs("categories/{$category->id}-{$category->slug}")
+            ->seePageIs(route('categories.show',[$category->id,$category->slug]))
             ->see($category->title)
             ->see($category->slug)
-            ->see($category->content);
+            ->see($category->body);
     }
 }

@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\ModelHelpers;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class Post extends Model
 {   
+    use ModelHelpers;
+
     protected $fillable = [
         'user_id'   ,'category_id',
         'title'     ,'slug',
@@ -28,12 +29,6 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
-    }
-
-    public function setTitleAttribute($value)
-    {
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
     }
 
     public function getUrlAttribute()

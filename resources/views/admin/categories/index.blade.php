@@ -28,8 +28,8 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->title }}</td>
                                 <td with="10px">
-                                    <a 
-                                    {{-- href="{{ route('categories.show', $category->id) }}" --}}
+                                    <a id="ver"
+                                    href="{{ route('categories.show', [$category->id, $category->slug]) }}"
                                         class="btn btn-sm btn-light">
                                         ver
                                     </a>

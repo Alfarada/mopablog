@@ -136,6 +136,32 @@ class AdminCategoryTest extends BrowserTestCase
             'slug' => 'new-category-title',
             'body' => 'new content category'
         ]);
+    }
 
+    function test_admini_can_delete_to_cagetory()
+    {  
+        // Having
+        $admin = $this->adminUser();
+
+        $category = factory(Category::class)->create([
+            'title' => 'any category title',
+            'slug' => 'any-category-title',
+            'body' => 'any category content'
+        ]);
+        
+        // When
+        $this->actingAs($admin)
+            ->visitRoute('categories.index')
+            //->see('Eliminar')
+            ->press('Eliminar')
+            ->see('Categoría eliminada con exito')
+            ->seePageIs(route('categories.index'));
+
+        // Expect
+        $this->dontSeeInDatabase('categories', [
+            'title' => $category->title,
+            'slug' => $category->slug,
+            'body' => $category->body
+        ]);
     }
 }

@@ -92,12 +92,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     Category::find($id)->delete();
+    public function destroy(Category $category)
+    {
+        $category->delete();
 
-    //     alert('Categoría eliminada correctamente');
+        alert('Categoría eliminada con exito');
 
-    //     return back();
-    // }
+        return back();
+    }
 }

@@ -42,12 +42,12 @@
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    {{-- {!! Form::open(['route' => ['categories.destroy', $category->id ], 'method' =>
+                                    {!! Form::open(['route' => ['categories.destroy', $category ], 'method' =>
                                     'DELETE']) !!}
 
                                     <button class="btn btn-sm btn-danger"> Eliminar</button>
 
-                                    {!! Form::close()!!} --}}
+                                    {!! Form::close()!!}
                                 </td>
                             </tr>
                             @endforeach

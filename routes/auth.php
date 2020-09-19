@@ -24,6 +24,8 @@ Route::get('categories/edit/{category}-{slug}', 'CategoryController@edit')->name
 
 Route::put('categories', 'CategoryController@update')->name('categories.update');
 
+Route::delete('categories/delete/{category}', 'CategoryController@destroy')->name('categories.destroy');
+
 // CRUD  POST ROUTES 
 
 Route::get('posts', 'PostController@index')->name('posts.index');

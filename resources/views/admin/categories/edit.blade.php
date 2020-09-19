@@ -9,7 +9,9 @@
                     <h5 class="card-title mb-0"> Editar Categoría</h5>
                 </div>
                 <div class="card-body">
-                    {!! Form::model($category,['route' => ['categories.update', $category->id], 'method' => 'PUT']) !!}
+                    {!! Form::model($category, [
+                        'route' => ['categories.update', [$category->id, $category->slug]],
+                        'method' => 'PUT']) !!}
 
                     @include('admin.categories.partials.form ')
 

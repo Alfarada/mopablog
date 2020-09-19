@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('tags', 'TagController');
 
 // Route::resource('categories', 'CategoryController');
+
 //CRUD CATEGORY ROUTES
 
 Route::get('categories', 'CategoryController@index')->name('categories.index');
@@ -19,7 +20,12 @@ Route::get('categories/create', 'CategoryController@create')->name('categories.c
 
 Route::post('categories', 'CategoryController@store')->name('categories.store');
 
+Route::get('categories/edit/{category}-{slug}', 'CategoryController@edit')->name('categories.edit');
+
+Route::put('categories', 'CategoryController@update')->name('categories.update');
+
 // CRUD  POST ROUTES 
+
 Route::get('posts', 'PostController@index')->name('posts.index');
 
 Route::get('posts/{post}-{slug}', 'PostController@show')->name('posts.show')->where('post','\d+');

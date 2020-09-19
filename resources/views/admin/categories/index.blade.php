@@ -36,7 +36,7 @@
                                 </td>
                                 <td with="10px">
                                     <a 
-                                    {{-- href=" {{ route('categories.edit', $category->id) }}" --}}
+                                    href=" {{ route('categories.edit', [$category->id, $category->slug]) }}"
                                         class="btn btn-sm btn-light">
                                         editar
                                     </a>

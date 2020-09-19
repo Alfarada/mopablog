@@ -33,8 +33,8 @@ class AdminCategoryTest extends BrowserTestCase
 
         $this->actingAs($admin)
             ->visitRoute('categories.index')
-            ->assertResponseOk()
             ->click('Crear categoría')
+            ->assertResponseOk()
             ->seePageIs(route('categories.create'));
     }
 
@@ -43,7 +43,7 @@ class AdminCategoryTest extends BrowserTestCase
         // Having     
         $admin = $this->defaultUser(['admin' => true]);
 
-        $category = factory(Category::class)->make([
+        $category = new Category([
             'title' => 'any cateogory title',
             'slug' => 'any-category-title',
             'body' => 'any category body'
@@ -68,8 +68,9 @@ class AdminCategoryTest extends BrowserTestCase
         ]);
     }
 
-    function test_the_admin_can_view_the_category_details()
-    {
+    function test_the_admin_can_see_the_category_details()
+    {   
+        // Having
         $admin = $this->adminUser();
 
         $category = factory(Category::class)->create([
@@ -77,7 +78,8 @@ class AdminCategoryTest extends BrowserTestCase
             'slug' => 'any-category-title',
             'body' => 'any category content'
         ]);
-
+        
+        // When - Expect
         $this->actingAs($admin)
             ->visitRoute('categories.index')
             ->click('ver')
@@ -85,5 +87,55 @@ class AdminCategoryTest extends BrowserTestCase
             ->see($category->title)
             ->see($category->slug)
             ->see($category->body);
+    }
+
+    function test_administrator_can_load_the_page_to_edit_category()
+    {   
+        // Having
+        $admin = $this->adminUser();
+
+        $category = factory(Category::class)->create([
+            'title' => 'any category title',
+            'slug' => 'any-category-title',
+            'body' => 'any category content'
+        ]);
+        
+        // When
+        $this->actingAs($admin)
+            ->visitRoute('categories.index')
+            ->click('editar')
+            ->assertResponseOk()
+            ->seePageIs(route('categories.edit', [$category->id, $category->slug]))
+            ->see('Editar Categoría');
+    }
+
+    function test_the_admin_can_edit_the_category_details()
+    {   
+        // Having
+        $admin = $this->adminUser();
+
+        $category = factory(Category::class)->create([
+            'title' => 'any category title',
+            'slug' => 'any-category-title',
+            'body' => 'any category content'
+        ]);
+        
+        // When
+        $this->actingAs($admin)
+            ->visitRoute('categories.edit', [$category->id, $category->slug])
+            ->see('Editar Categoría')
+            ->type('new category title', 'title')
+            ->type('new-category-title', 'slug')
+            ->type('new content category', 'body')
+            ->press('Guardar')
+            ->see('Categoría actualizada con exito');
+
+        // Expect
+        $this->seeInDatabase('categories', [
+            'title' => 'new category title',
+            'slug' => 'new-category-title',
+            'body' => 'new content category'
+        ]);
+
     }
 }

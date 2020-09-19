@@ -65,12 +65,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function edit($id)
-    // {
-    //     $category = Category::find($id);
-
-    //     return view('admin.categories.edit', ['category' => $category]);
-    // }
+    public function edit(Category $category)
+    {
+        return view('admin.categories.edit', compact('category'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -79,16 +77,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(CategoryUpdateRequest $request, $id)
-    // {
-    //     $category = Category::find($id);
+    public function update(CategoryUpdateRequest $request, Category $category)
+    {
+        $category->fill($request->all())->save();
 
-    //     $category->fill($request->all())->save();
+        alert('Categoría actualizada con exito');
 
-    //     alert('Categoría actualizada con exito');
-
-    //     return redirect()->route('categories.edit', $category->id);
-    // }
+        return redirect()->route('categories.show', [$category->id, $category->slug]);
+    }
 
     /**
      * Remove the specified resource from storage.

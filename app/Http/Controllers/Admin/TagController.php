@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Tag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{TagStoreRequest, TagUpdateRequest};
-use Styde\Html\Facades\Alert;
 
 class TagController extends Controller
 {
@@ -63,11 +62,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        $tag = Tag::find($id);
-
-        return view('admin.tags.edit', ['tag' => $tag]);
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -77,15 +74,13 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TagUpdateRequest $request, $id)
+    public function update(TagUpdateRequest $request, Tag $tag)
     {
-        $tag = Tag::find($id);
-
         $tag->fill($request->all())->save();
 
         alert('Etiqueta actualizada con exito');
 
-        return redirect()->route('tags.edit', $tag->id);
+        return redirect()->route('tags.show',[$tag->id, $tag->slug]);
     }
 
     /**
@@ -94,11 +89,11 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        Tag::find($id)->delete();
+        $tag->delete();
 
-        alert('Etiqueta eliminada correctamente');
+        alert('Etiqueta eliminada con éxito');
 
         return back();
     }

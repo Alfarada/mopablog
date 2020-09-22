@@ -33,20 +33,19 @@
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    <a  
-                                        {{-- href=" {{ route('tags.edit', $tag->id) }}"  --}}
+                                    <a  href=" {{ route('tags.edit', [$tag->id, $tag->slug]) }}" 
                                         class="btn btn-sm btn-light">
                                         editar
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    {{-- {!! Form::open([
-                                        'route' => ['tags.destroy', $tag->id ],
+                                    {!! Form::open([
+                                        'route' => ['tags.destroy', $tag ],
                                         'method' => 'DELETE']) !!}
 
-                                        <button class="btn btn-sm btn-danger"> Eliminar</button>
+                                        <button class="btn btn-sm btn-danger"> eliminar</button>
 
-                                    {!! Form::close()!!} --}}
+                                    {!! Form::close()!!}
                                 </td>
                             </tr>
                             @endforeach

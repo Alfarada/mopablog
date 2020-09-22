@@ -58,4 +58,63 @@ class AdminTagTest extends BrowserTestCase
             ->see($tag->created_at);
     }
 
+    function test_admin_can_edit_tag_form_tag_list()
+    {   
+        // Having
+        $admin = $this->adminUser();
+        $tag = factory(Tag::class)->create();
+
+        // When - Expect
+        $this->actingAs($admin)
+            ->visitRoute('tags.index')
+            ->click('editar')
+            ->seePageIs(route('tags.edit', [$tag->id, $tag->slug]));
+    }
+
+    function test_the_admin_can_edit_the_tag()
+    {   
+        // Having
+        $admin = $this->adminUser();
+
+        $tag = factory(Tag::class)->create([
+            'title' => 'Any tag title'
+        ]);
+
+        // When
+        $this->actingAs($admin)
+            ->visitRoute('tags.edit', [$tag->id, $tag->slug])
+            ->assertResponseOk()
+            ->see('Editar etiqueta')
+            ->type('new tag title', 'title')
+            ->type('new-tag-title', 'slug')
+            ->press('Guardar');
+
+        // Expect
+        $this->seeInDatabase('tags', [
+            'title' => 'new tag title',
+            'slug' => 'new-tag-title'
+        ]);
+    }
+
+    function test_admin_can_delete_tag()
+    {
+        // Having
+        $admin = $this->adminUser();
+        $tag = factory(Tag::class)->create();
+
+        // When
+        $this->actingAs($admin)
+            ->visitRoute('tags.index')
+            ->press('eliminar')
+            ->assertResponseOk()
+            ->see('Etiqueta eliminada con éxito')
+            ->seePageIs(route('tags.index'));
+
+        // Expect
+        $this->dontSeeInDatabase('tags', [
+            'title' => $tag->title,
+            'slug' => $tag->slug
+        ]);
+    }
+
 }

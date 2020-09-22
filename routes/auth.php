@@ -12,6 +12,12 @@ Route::get('tags', 'TagController@index')->name('tags.index');
 
 Route::get('tags/{tag}-{slug}', 'TagController@show')->name('tags.show');
 
+Route::get('tags/edit/{tag}-{slug}', 'TagController@edit')->name('tags.edit');
+
+Route::put('tags/edit', 'TagController@update')->name('tags.update');
+
+Route::delete('tags/delete/{tag}', 'TagController@destroy')->name('tags.destroy');
+
 // Route::get('categories/create', 'CategoryController@create')->name('categories.create');
 
 // Route::post('categories', 'CategoryController@store')->name('categories.store');

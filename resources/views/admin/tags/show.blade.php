@@ -7,11 +7,12 @@
                 <div class="card">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title mb-0"> Ver Etiqueta </h5>
+                            <h5 class="card-title mb-0"> Detalles de la etiqueta </h5>
                         </div>
                         <div class="card-body">
                             <p><strong>Nombre</strong> {{ $tag->title }}</p>
                             <p><strong>Slug</strong>   {{ $tag->slug }}</p>
+                            <p><strong>fecha:</strong>   {{ $tag->created_at }}</p>
                         </div>
                     </div>
                 </div>

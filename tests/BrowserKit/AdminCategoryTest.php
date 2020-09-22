@@ -138,7 +138,7 @@ class AdminCategoryTest extends BrowserTestCase
         ]);
     }
 
-    function test_admini_can_delete_to_cagetory()
+    function test_admin_can_delete_to_cagetory()
     {  
         // Having
         $admin = $this->adminUser();
@@ -152,7 +152,6 @@ class AdminCategoryTest extends BrowserTestCase
         // When
         $this->actingAs($admin)
             ->visitRoute('categories.index')
-            //->see('Eliminar')
             ->press('Eliminar')
             ->see('Categoría eliminada con exito')
             ->seePageIs(route('categories.index'));

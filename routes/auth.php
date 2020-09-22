@@ -6,9 +6,21 @@ use Illuminate\Support\Facades\Route;
  * routes that require authentication and administrator status
  */
 
-Route::resource('tags', 'TagController');
+//Route::resource('tags', 'TagController');
 
-// Route::resource('categories', 'CategoryController');
+Route::get('tags', 'TagController@index')->name('tags.index');
+
+Route::get('tags/{tag}-{slug}', 'TagController@show')->name('tags.show');
+
+// Route::get('categories/create', 'CategoryController@create')->name('categories.create');
+
+// Route::post('categories', 'CategoryController@store')->name('categories.store');
+
+// Route::get('categories/edit/{category}-{slug}', 'CategoryController@edit')->name('categories.edit');
+
+// Route::put('categories', 'CategoryController@update')->name('categories.update');
+
+// Route::delete('categories/delete/{category}', 'CategoryController@destroy')->name('categories.destroy');
 
 //CRUD CATEGORY ROUTES
 

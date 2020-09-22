@@ -63,26 +63,30 @@ class AdminPostTest extends BrowserTestCase
             ->see($post->body);
     }
 
-    // function test_admin_create_a_post()
-    // {
-    //     $admin = $this->defaultUser(['admin' => true]);
+    
+    function test_old_urls_are_redirected()
+    {
+        // Having
 
-    //     $category = factory(Category::class)
-    //         ->create(['title' => 'category tite']);
+        $admin = $this->adminUser();
 
-    //     factory(Tag::class)->create(['title' => 'tag title']);
+        $post = factory(Post::class)->make([
+            'title' => 'old title'
+        ]);
 
-    //     $this->actingAs($admin)
-    //         ->visitRoute('posts.create')
-    //         ->select($category->id, 'category_id')
-    //         ->type('post title', 'title')
-    //         ->select('PUBLISHED', 'status')
-    //         ->type('excerpt post', 'excerpt')
-    //         ->type('post content', 'body')
-    //         ->submitForm('Guardar', [
-    //             'tags[0]' => 1
-    //         ]);
+        $admin->posts()->save($post);
+            
+        // This $url has the old url ass value
+        // route('posts.show',[$post->id,$post->slug])
+        $url = $post->url; 
 
-    //     $this->assertSame(1, Post::first());
-    // }
+        $post->update(['title' => 'New title']);
+
+        $this->actingAs($admin)
+            ->visit($url)
+            ->seePageIs($post->url);
+        
+    }
+
+
 }

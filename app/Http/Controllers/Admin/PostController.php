@@ -85,7 +85,6 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {   
-        // $post = Post::find($id);
         // $this->authorize('pass', $post);
 
         $categories =  Category::orderBy('title', 'ASC')->pluck('title', 'id');
@@ -103,7 +102,6 @@ class PostController extends Controller
      */
     public function update(PostUpdateRequest $request, Post $post)
     {
-        // $post = Post::find($post->id);
         //$this->authorize('pass', $post);
         $post->fill($request->all())->save();
 
@@ -130,7 +128,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {   
-        // $post = Post::find($post->id);
         // $this->authorize('pass', $post);
         $post->delete();
 

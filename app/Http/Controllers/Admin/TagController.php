@@ -26,10 +26,10 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin/tags.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin/tags.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -37,14 +37,14 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagStoreRequest $request)
-    {
-        $tag = Tag::create($request->all());
+    // public function store(TagStoreRequest $request)
+    // {
+    //     $tag = Tag::create($request->all());
 
-        alert('Etiqueta creada con éxito');
+    //     alert('Etiqueta creada con éxito');
 
-        return redirect()->route('tags.edit', $tag->id);
-    }
+    //     return redirect()->route('tags.edit', $tag->id);
+    // }
 
     /**
      * Display the specified resource.
@@ -52,11 +52,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tag $tag)
     {
-        $tag = Tag::find($id);
-
-        return view('admin.tags.show', ['tag' => $tag]);
+        return view('admin.tags.show', compact('tag'));
     }
 
     /**

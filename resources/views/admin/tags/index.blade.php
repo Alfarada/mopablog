@@ -6,9 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0"> Indice de etiquetas
+                    <h5 class="card-title mb-0"> Lista de Etiquetas
                         <a  class="btn btn-sm btn-primary float-right"
-                            href=" {{ route('tags.create') }}">crear</a></h5>
+                            {{-- href=" {{ route('tags.create') }}" --}}
+                            >crear</a></h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-light">
@@ -26,25 +27,26 @@
                                 <td>{{ $tag->id }}</td>
                                 <td>{{ $tag->title }}</td>
                                 <td with="10px">
-                                    <a  href=" {{ route('tags.show', $tag->id) }}"
+                                    <a  href=" {{ route('tags.show', [$tag->id, $tag->slug]) }}"
                                         class="btn btn-sm btn-light">
                                         ver
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    <a  href=" {{ route('tags.edit', $tag->id) }}" 
+                                    <a  
+                                        {{-- href=" {{ route('tags.edit', $tag->id) }}"  --}}
                                         class="btn btn-sm btn-light">
                                         editar
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    {!! Form::open([
+                                    {{-- {!! Form::open([
                                         'route' => ['tags.destroy', $tag->id ],
                                         'method' => 'DELETE']) !!}
 
                                         <button class="btn btn-sm btn-danger"> Eliminar</button>
 
-                                    {!! Form::close()!!}
+                                    {!! Form::close()!!} --}}
                                 </td>
                             </tr>
                             @endforeach

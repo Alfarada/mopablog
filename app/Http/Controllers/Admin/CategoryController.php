@@ -38,7 +38,6 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {   
-        // dd($request->all());
         $category = Category::create($request->all());
 
         alert('Categoría creada con éxito');
@@ -53,9 +52,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
-    {
-        // $category = Category::find($id);
-        
+    {      
         return view('admin.categories.show', compact('category'));
     }
 

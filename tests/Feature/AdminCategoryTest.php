@@ -12,18 +12,6 @@ class AdminCategoryTest extends TestCase
 {
     use RefreshDatabase;
 
-    function test_admins_can_visit_category_page()
-    {
-        $admin = factory(User::class)->create([
-            'admin' => true
-        ]);
-
-        $this->actingAs($admin)
-            ->get('/categories')
-            ->assertOk()
-            ->assertSee('Lista de Categorías');
-    }
-
     function test_users_who_are_not_administrators_cannot_access_categories_page()
     {
         $user = $this->defaultUser();

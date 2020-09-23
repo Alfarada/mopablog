@@ -83,7 +83,7 @@
                 </div>
             </div>
         </nav>
-        {{-- Error message  --}}
+        {{-- Errors message  --}}
 
         @if ($errors->any())
         <div class="container mt-3">

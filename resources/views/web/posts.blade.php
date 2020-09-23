@@ -2,7 +2,7 @@
 @section('content')
 <div class="container d-flex justify-content-center">
     <div class="col-md-8 col-md-offset-2">
-        <h1>Lista de Artículos</h1>
+        <h1> Lista de artículos </h1>
         @foreach($posts as $post)
         <div class="card mb-3">
             <div class="card-header">
@@ -15,7 +15,7 @@
                 <p class="card-text">
                     {{ $post->excerpt }}
                 </p>
-                <a href=" {{ route('post', $post->slug ) }}" class="d-flex justify-content-end">Leer más</a>
+                <a href=" {{ route('post', [$post->id, $post->slug]) }}" class="d-flex justify-content-end">Leer más</a>
             </div>
         </div>
         @endforeach

@@ -17,9 +17,9 @@ Route::redirect('/','blog');
 Auth::routes();
 
 Route::get('blog', 'PageController@blog')->name('blog');
-Route::get('entrada/{slug}', 'PageController@post')->name('post');
-// Route::get('categoria/{slug}', 'PageController@category')->name('category');
-// Route::get('etiqueta/{slug}', 'PageController@tag')->name('tag');
+Route::get('post/{post}-{slug}', 'PageController@post')->name('post');
+Route::get('categories/category/{category}-{slug}', 'PageController@category')->name('category');
+Route::get('tags/tag/{tag}-{slug}', 'PageController@tag')->name('tag');
 
 
 

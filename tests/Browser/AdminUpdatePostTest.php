@@ -22,6 +22,7 @@ class AdminUpdatePostTest extends DuskTestCase
 
             $admin = $this->defaultUser(['admin' => true]);
 
+            $post->tags()->save($tag);
             $category->posts()->save($post);
             $admin->posts()->save($post);
 
@@ -31,7 +32,7 @@ class AdminUpdatePostTest extends DuskTestCase
                 ->select('category_id', $category->title)
                 ->type('title', 'new title')
                 ->radio('status', 'PUBLISHED')
-                ->check('.checkbox', $tag->title)
+                ->check(".tag{$tag->id}", $tag->title)
                 ->type('@excerpt', 'post excerpt')
                 ->type('#body', 'post content')
                 ->press('Guardar');
@@ -45,7 +46,11 @@ class AdminUpdatePostTest extends DuskTestCase
                 'title' => $category->title
             ]);
 
-            $this->assertDatabaseHas('tags',[
+            $this->assertDatabaseHas('post_tag',[
+                'post_id' => $post->id
+            ]);
+
+            $this->assertDatabaseHas('tags', [
                 'title' => $tag->title
             ]);
         });

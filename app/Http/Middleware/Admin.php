@@ -18,7 +18,7 @@ class Admin
     {   
         if (!auth()->user()->admin) {
             return response('You shell NOT pass!', Response::HTTP_FORBIDDEN);
-        }
+        }   
         
         return $next($request);
     }

@@ -83,8 +83,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($post)
     {   
+        $post = Post::find($post);
+
         // $this->authorize('pass', $post);
 
         $categories =  Category::orderBy('title', 'ASC')->pluck('title', 'id');
@@ -100,9 +102,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostUpdateRequest $request, Post $post)
+    public function update(PostUpdateRequest $request,$id)
     {
-        //$this->authorize('pass', $post);
+        // $this->authorize('pass', $post);
+        $post = Post::find($id);
+        // dd($post);
         $post->fill($request->all())->save();
 
         // Image

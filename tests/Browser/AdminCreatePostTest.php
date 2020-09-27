@@ -28,7 +28,7 @@ class AdminCreatePostTest extends DuskTestCase
                 ->select('category_id', $category->title)
                 ->type('title', 'new title')
                 ->radio('status', 'PUBLISHED')
-                ->check('.checkbox', $tag->title)
+                ->check(".tag{$tag->id}", $tag->title)
                 ->type('@excerpt', 'post excerpt')
                 ->type('#body', 'post content')
                 ->press('Guardar');

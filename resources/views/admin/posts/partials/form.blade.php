@@ -42,13 +42,8 @@
 
     <div class="container">
         @foreach ($tags as $tag)
-        <label>     
-            <input  id="checkbox"
-                    class="checkbox"
-                    type="checkbox"
-                    name="tags[]"
-                    value="{{ $tag->id }}">
-                    {{ $tag->title }}
+        <label>
+            {{ Form::checkbox('tags[]', $tag->id,null,["class" => "tag{$tag->id}"] )}} {{ $tag->title }}
         </label>
         @endforeach
     </div>

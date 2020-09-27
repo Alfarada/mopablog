@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PostUpdateRequest extends FormRequest
 {
@@ -17,7 +18,7 @@ class PostUpdateRequest extends FormRequest
             'user_id'    => 'required|integer',
             'category_id'=> 'required|integer',
             'title'      => 'required',
-            'slug'       => 'required|unique:posts,slug,'.$this->post,
+            'slug'       => ['required', Rule::unique('posts')->ignore($this->slug,'slug')],
             'tags'       => 'required|array',
             'status'     => 'required|in:DRAFT,PUBLISHED',
             // 'excerpt'    => 'required',

@@ -62,8 +62,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
+        $category = Category::find($id);
+
         return view('admin.categories.edit', compact('category'));
     }
 
@@ -74,8 +76,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryUpdateRequest $request, Category $category)
-    {
+    public function update(CategoryUpdateRequest $request, $id)
+    {   
+        $category = Category::find($id);
         $category->fill($request->all())->save();
 
         alert('Categoría actualizada con exito');
@@ -89,8 +92,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
-    {
+    public function destroy($id)
+    {   
+        $category = Category::find($id);
         $category->delete();
 
         alert('Categoría eliminada con exito');

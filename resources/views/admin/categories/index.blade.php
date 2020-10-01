@@ -6,10 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0"> Lista de Categorías 
-                        <a class="btn btn-sm btn-primary float-right"
-                            href=" {{ route('categories.create') }}"
-                            >Crear categoría</a></h5>
+                    <h5 class="card-title mb-0"> Lista de Categorías
+                        <a class="btn btn-sm btn-primary float-right" href=" {{ route('categories.create') }}">Crear
+                            categoría</a></h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-light">
@@ -28,15 +27,13 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->title }}</td>
                                 <td with="10px">
-                                    <a id="ver"
-                                    href="{{ route('categories.show', [$category->id, $category->slug]) }}"
+                                    <a id="ver" href="{{ route('categories.show', [$category->id, $category->slug]) }}"
                                         class="btn btn-sm btn-light">
                                         ver
                                     </a>
                                 </td>
                                 <td with="10px">
-                                    <a 
-                                    href=" {{ route('categories.edit', [$category->id, $category->slug]) }}"
+                                    <a href=" {{ route('categories.edit', [$category->id, $category->slug]) }}"
                                         class="btn btn-sm btn-light">
                                         editar
                                     </a>

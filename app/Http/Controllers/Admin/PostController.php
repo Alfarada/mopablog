@@ -57,7 +57,7 @@ class PostController extends Controller
 
         alert('Entrada creada con éxito');
 
-        return redirect()->route('posts.show', [$post->id,$post->slug]);
+        return redirect()->route('posts.show', [$post->id, $post->slug]);
     }
 
     /**
@@ -84,7 +84,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($post)
-    {   
+    {
         $post = Post::find($post);
 
         // $this->authorize('pass', $post);
@@ -92,7 +92,7 @@ class PostController extends Controller
         $categories =  Category::orderBy('title', 'ASC')->pluck('title', 'id');
         $tags       = Tag::orderBy('title', 'ASC')->get();
 
-        return view('admin.posts.edit', compact('post','categories','tags'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -102,11 +102,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostUpdateRequest $request,$id)
+    public function update(PostUpdateRequest $request, $id)
     {
-        // $this->authorize('pass', $post);
         $post = Post::find($id);
-        // dd($post);
+
         $post->fill($request->all())->save();
 
         // Image
@@ -131,7 +130,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
-    {   
+    {
         // $this->authorize('pass', $post);
         $post->delete();
 

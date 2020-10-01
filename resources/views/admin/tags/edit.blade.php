@@ -9,7 +9,7 @@
                     <h5 class="card-title mb-0"> Editar Etiqueta</h5>
                 </div>
                 <div class="card-body">
-                    {!! Form::model($tag,['route' => ['tags.update', $tag->id], 'method' => 'PUT']) !!}
+                    {!! Form::model($tag,['route' => ['tags.update', $tag->id ], 'method' => 'PUT']) !!}
 
                     @include('admin.tags.partials.form ')
 

@@ -25,10 +25,10 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     return view('admin/tags.create');
-    // }
+    public function create()
+    {
+        return view('admin/tags.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,14 +36,14 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(TagStoreRequest $request)
-    // {
-    //     $tag = Tag::create($request->all());
+    public function store(TagStoreRequest $request)
+    {
+        $tag = Tag::create($request->all());
 
-    //     alert('Etiqueta creada con éxito');
+        alert('Etiqueta creada con éxito');
 
-    //     return redirect()->route('tags.edit', $tag->id);
-    // }
+        return redirect()->route('tags.edit', $tag->id);
+    }
 
     /**
      * Display the specified resource.
@@ -62,8 +62,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
+        $tag = Tag::find($id);
+
         return view('admin.tags.edit', compact('tag'));
     }
 
@@ -74,13 +76,14 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TagUpdateRequest $request, Tag $tag)
+    public function update(TagUpdateRequest $request, $id)
     {
+        $tag = Tag::find($id);
         $tag->fill($request->all())->save();
 
         alert('Etiqueta actualizada con exito');
 
-        return redirect()->route('tags.show',[$tag->id, $tag->slug]);
+        return redirect()->route('tags.show', [$tag->id, $tag->slug]);
     }
 
     /**
@@ -89,8 +92,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
+        $tag = Tag::find($id);
         $tag->delete();
 
         alert('Etiqueta eliminada con éxito');

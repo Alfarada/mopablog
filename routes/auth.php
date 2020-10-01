@@ -12,7 +12,7 @@ Route::get('tags/{tag}-{slug}', 'TagController@show')->name('tags.show');
 
 Route::get('tags/edit/{tag}-{slug}', 'TagController@edit')->name('tags.edit');
 
-Route::put('tags/edit', 'TagController@update')->name('tags.update');
+Route::put('tags/edit/{tag}', 'TagController@update')->name('tags.update');
 
 Route::delete('tags/delete/{tag}', 'TagController@destroy')->name('tags.destroy');
 
@@ -28,7 +28,7 @@ Route::post('categories', 'CategoryController@store')->name('categories.store');
 
 Route::get('categories/edit/{category}-{slug}', 'CategoryController@edit')->name('categories.edit');
 
-Route::put('categories', 'CategoryController@update')->name('categories.update');
+Route::put('categories/edit/{category}', 'CategoryController@update')->name('categories.update');
 
 Route::delete('categories/delete/{category}', 'CategoryController@destroy')->name('categories.destroy');
 

@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title mb-0"> Ver Categoría </h5>
+                            <h5 class="card-title mb-0"> Detalles de la Categoría </h5>
                         </div>
                         <div class="card-body">
                             <p><strong>Nombre :</strong> {{ $category->title }}</p>

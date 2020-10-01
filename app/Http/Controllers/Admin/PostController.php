@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('id', 'DESC')
             ->where('user_id', auth()->user()->id)
-            ->paginate(6);
+            ->paginate();
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -29,8 +29,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('title', 'ASC')->pluck('title', 'id');
-        $tags       = Tag::orderBy('title', 'ASC')->get();
+        $categories = Category::orderBy('title', 'ASC')
+            ->pluck('title', 'id');
+
+        $tags = Tag::orderBy('title', 'ASC')
+            ->get();
 
         return view('admin.posts.create', compact('categories', 'tags'));
     }
@@ -79,9 +82,10 @@ class PostController extends Controller
     {
         $post = Post::find($post);
 
-        $categories =  Category::orderBy('title', 'ASC')->pluck('title', 'id');
+        $categories = Category::orderBy('title', 'ASC')
+            ->pluck('title', 'id');
 
-        $tags       = Tag::orderBy('title', 'ASC')->get();
+        $tags = Tag::orderBy('title', 'ASC')->get();
 
         return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }

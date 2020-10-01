@@ -21,7 +21,7 @@ class AdminPostTest extends BrowserTestCase
 
         $this->actingAs($admin)
             ->visitRoute('posts.index')
-            ->see('Lista de Entradas')
+            ->see('Lista de Posts')
             ->see($postAnyone->title);
     }
 

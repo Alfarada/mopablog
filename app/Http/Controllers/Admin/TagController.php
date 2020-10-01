@@ -17,7 +17,7 @@ class TagController extends Controller
     {
         $tags = Tag::orderBy('id', 'DESC')->paginate();
 
-        return view('admin.tags.index', ['tags' => $tags]);
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -83,7 +83,7 @@ class TagController extends Controller
 
         alert('Etiqueta actualizada con exito');
 
-        return redirect()->route('tags.show', [$tag->id, $tag->slug]);
+        return redirect()->route('tags.show', $tag->url_attr);
     }
 
     /**

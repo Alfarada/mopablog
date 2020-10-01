@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         alert('Categoría creada con éxito');
 
-        return redirect()->route('categories.show', [$category->id,$category->slug]);
+        return redirect()->route('categories.show', $category->url_attr);
     }
 
     /**
@@ -83,7 +83,7 @@ class CategoryController extends Controller
 
         alert('Categoría actualizada con exito');
 
-        return redirect()->route('categories.show', [$category->id, $category->slug]);
+        return redirect()->route('categories.show', $category->url_attr);
     }
 
     /**

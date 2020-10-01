@@ -37,7 +37,7 @@ class AdminTagTest extends BrowserTestCase
             ->visitRoute('tags.index')
             ->click('ver')
             ->assertResponseOk()
-            ->seePageIs(route('tags.show', [$tag->id, $tag->slug]));
+            ->seePageIs(route('tags.show', $tag->url_attr));
     }
 
     function test_its_admin_can_see_the_details_of_tag()
@@ -52,7 +52,7 @@ class AdminTagTest extends BrowserTestCase
 
         // When - Expect
         $this->actingAs($admin)
-            ->visit(route('tags.show', [$tag->id, $tag->slug]))
+            ->visitRoute('tags.show', $tag->url_attr)
             ->see($tag->title)
             ->see($tag->slug)
             ->see($tag->created_at);
@@ -68,7 +68,7 @@ class AdminTagTest extends BrowserTestCase
         $this->actingAs($admin)
             ->visitRoute('tags.index')
             ->click('editar')
-            ->seePageIs(route('tags.edit', [$tag->id, $tag->slug]));
+            ->seePageIs(route('tags.edit', $tag->url_attr));
     }
 
     function test_the_admin_can_edit_the_tag()
@@ -82,7 +82,7 @@ class AdminTagTest extends BrowserTestCase
 
         // When
         $this->actingAs($admin)
-            ->visitRoute('tags.edit', [$tag->id, $tag->slug])
+            ->visitRoute('tags.edit', $tag->url_attr)
             ->assertResponseOk()
             ->see('Editar etiqueta')
             ->type('new tag title', 'title')

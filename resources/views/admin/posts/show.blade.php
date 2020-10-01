@@ -12,7 +12,8 @@
                         <div class="card-body">
                             <p><strong>Nombre :</strong> {{ $post->title }}</p>
                             <p><strong>Slug :</strong>   {{ $post->slug }}</p>
-                            <p><strong>Imagen :</strong> {{ $post->file }}</p>
+                            <p><strong>Imagen :</strong> </p>
+                            <img class="img-fluid" src="{{ $post->file }}" alt=" {{ $post->title }}">
                             <p><strong>Estado :</strong> {{ $post->status }}</p>
                             <p><strong>Extracto :</strong> {{ $post->excerpt }}</p>
                             <p><strong>Contenido :</strong> {!! $post->body !!}</p>

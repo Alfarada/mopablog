@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\{Tag, Post, Category};
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\{PostStoreRequest, PostUpdateRequest};
 
 class PostController extends Controller
@@ -20,7 +19,7 @@ class PostController extends Controller
             ->where('user_id', auth()->user()->id)
             ->paginate(6);
 
-        return view('admin.posts.index', ['posts' => $posts]);
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -46,18 +45,13 @@ class PostController extends Controller
     {
         $post = Post::create($request->all());
 
-        // IMAGE
-        if ($request->file('file')) {
-            $path = Storage::disk('public')->put('image', $request->file('file'));
-            $post->fill(['file' => asset($path)])->save();
-        }
+        $post->storeFile($request); // Unit test pending
 
-        // Tags
         $post->tags()->attach($request->get('tags'));
 
         alert('Entrada creada con éxito');
 
-        return redirect()->route('posts.show', [$post->id, $post->slug]);
+        return redirect()->route('posts.show', $post->url_attr);
     }
 
     /**
@@ -68,13 +62,11 @@ class PostController extends Controller
      */
     public function show(Post $post, $slug)
     {
-        //$this->authorize('pass', $post);
-
         if ($post->slug != $slug) {
             return redirect($post->url, 301);
         }
 
-        return view('admin.posts.show', ['post' => $post]);
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -87,9 +79,8 @@ class PostController extends Controller
     {
         $post = Post::find($post);
 
-        // $this->authorize('pass', $post);
-
         $categories =  Category::orderBy('title', 'ASC')->pluck('title', 'id');
+
         $tags       = Tag::orderBy('title', 'ASC')->get();
 
         return view('admin.posts.edit', compact('post', 'categories', 'tags'));
@@ -108,19 +99,13 @@ class PostController extends Controller
 
         $post->fill($request->all())->save();
 
-        // Image
-        if ($request->file('file')) {
+        $post->storeFile($request);
 
-            $path = Storage::disk('public')->put('image', $request->file('file'));
-            $post->fill(['file' => asset($path)])->save();
-        }
-
-        // Tags
         $post->tags()->sync($request->get('tags'));
 
         alert('Entrada actualizada con exito');
 
-        return redirect()->route('posts.show', [$post->id, $post->slug]);
+        return redirect()->route('posts.show', $post->url_attr);
     }
 
     /**
@@ -129,9 +114,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        // $this->authorize('pass', $post);
+        $post = Post::find($id);
         $post->delete();
 
         alert('Post eliminado con éxito.');

@@ -54,7 +54,7 @@ class AdminPostTest extends BrowserTestCase
 
         // When - Expect
         $this->actingAs($admin)
-            ->visit(route('posts.show',$post->values))
+            ->visit(route('posts.show', $post->url_attr))
             ->see($post->title)
             ->see($post->slug)
             ->see($post->file)

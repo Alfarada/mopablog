@@ -105,7 +105,7 @@ class AdminCategoryTest extends BrowserTestCase
             ->visitRoute('categories.index')
             ->click('editar')
             ->assertResponseOk()
-            ->seePageIs(route('categories.edit', [$category->id, $category->slug]))
+            ->seePageIs(route('categories.edit', $category->url_attr))
             ->see('Editar Categoría');
     }
 
@@ -122,7 +122,7 @@ class AdminCategoryTest extends BrowserTestCase
         
         // When
         $this->actingAs($admin)
-            ->visitRoute('categories.edit', [$category->id, $category->slug])
+            ->visitRoute('categories.edit', $category->url_attr)
             ->see('Editar Categoría')
             ->type('new category title', 'title')
             ->type('new-category-title', 'slug')

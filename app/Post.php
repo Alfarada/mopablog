@@ -4,6 +4,7 @@ namespace App;
 
 use App\ModelHelpers;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {   
@@ -34,6 +35,14 @@ class Post extends Model
     public function getUrlAttribute()
     {
         return route("posts.show", [$this->id, $this->slug]);
+    }
+
+    public function storeFile($request)
+    {
+        if ($request->file('file')) {
+            $path = Storage::disk('public')->put('image', $request->file('file'));
+            $this->fill(['file' => asset($path)])->save();
+        }
     }
 
 }

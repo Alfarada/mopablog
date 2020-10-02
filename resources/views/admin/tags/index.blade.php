@@ -1,60 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-center">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0"> Lista de Etiquetas
-                        <a  class="btn btn-sm btn-primary float-right"
-                            {{-- href=" {{ route('tags.create') }}" --}}
-                            >crear</a></h5>
-                </div>
-                <div class="card-body">
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th width="10px">ID</th>
-                                <th>Nombre</th>
-                                <th>Detalles</th>
-                                <th colspan="3">&nbsp;</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($tags as $tag)
-                            <tr>
-                                <td>{{ $tag->id }}</td>
-                                <td>{{ $tag->title }}</td>
-                                <td with="10px">
-                                    <a  href=" {{ route('tags.show', [$tag->id, $tag->slug]) }}"
-                                        class="btn btn-sm btn-light">
-                                        ver
-                                    </a>
-                                </td>
-                                <td with="10px">
-                                    <a  href=" {{ route('tags.edit', [$tag->id, $tag->slug]) }}" 
-                                        class="btn btn-sm btn-light">
-                                        editar
-                                    </a>
-                                </td>
-                                <td with="10px">
-                                    {!! Form::open([
-                                        'route' => ['tags.destroy', $tag ],
-                                        'method' => 'DELETE']) !!}
+    @component('shared._card')
+        
+    @slot('header')        
+        Lista de Etiquetas
+        <a class="btn btn-sm btn-primary float-right" href=" {{ route('tags.create') }}"> Crear etiqueta</a>
+    @endslot
 
-                                        <button class="btn btn-sm btn-danger"> eliminar</button>
-
-                                    {!! Form::close()!!}
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $tags->render() }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    @slot('content') 
+        @component('shared._table')
+            @slot('body')
+                @foreach ($tags as $tag)
+                <tr>
+                    <td> {{ $tag->id }} </td>
+                    <td> {{ $tag->title }} </td>
+                    <td> <a href=" {{ route('tags.show', $tag->url_attr ) }}"
+                            class="btn btn-sm btn-light"> ver </a>
+                    </td>
+                    <td><a href=" {{ route('tags.edit', $tag->url_attr) }}"
+                            class="btn btn-sm btn-light"> editar </a>
+                    </td>
+                    <td>
+                        {!! Form::open(['route' => ['tags.destroy', $tag ], 'method' => 'DELETE']) !!}
+                            <button class="btn btn-sm btn-danger"> eliminar </button>
+                        {!! Form::close()!!}
+                    </td>
+                </tr>
+                @endforeach
+            @endslot
+        @endcomponent
+        {{ $tags->render() }}
+    @endslot
+@endcomponent
 @endsection

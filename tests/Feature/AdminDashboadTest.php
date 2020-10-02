@@ -17,7 +17,7 @@ class AdminDashboadTest extends TestCase
             ->get('/blog')
             ->assertStatus(200)
             ->assertSee('Categorías')
-            ->assertSee('Entradas')
+            ->assertSee('Posts')
             ->assertSee('Etiquetas');
     }
 

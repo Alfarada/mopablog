@@ -10,6 +10,44 @@ class AdminTagTest extends BrowserTestCase
 {
     use RefreshDatabase;
 
+    function test_administrator_can_load_the_page_to_create_tag()
+    {
+        $admin = $this->adminUser();
+
+        $this->actingAs($admin)
+            ->visitRoute('tags.index')
+            ->click('Crear etiqueta')
+            ->assertResponseOk()
+            ->seePageIs(route('tags.create'));
+    }
+
+    function test_admin_create_a_category()
+    {
+        // Having     
+        $admin = $this->defaultUser(['admin' => true]);
+
+        $tag = new Tag([
+            'title' => 'any tag title',
+            'slug' => 'any-tag-title'
+        ]);
+
+        $this->actingAs($admin);
+
+        // When
+        $this->visitRoute('tags.create')
+            ->see('Crear etiqueta')
+            ->type($tag->title, 'title')
+            ->type($tag->slug, 'slug')
+            ->press('Guardar')
+            ->see('Etiqueta creada con éxito');
+
+        // Expect          
+        $this->seeInDatabase('tags', [
+            'title' => $tag->title,
+            'slug' => $tag->slug
+        ]);
+    }
+
     function test_its_admin_can_see_the_list_of_tags()
     {
         $admin = $this->adminUser();

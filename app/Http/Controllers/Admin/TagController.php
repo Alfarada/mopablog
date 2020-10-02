@@ -27,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin/tags.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -42,7 +42,7 @@ class TagController extends Controller
 
         alert('Etiqueta creada con éxito');
 
-        return redirect()->route('tags.edit', $tag->id);
+        return redirect()->route('tags.edit', $tag->url_attr);
     }
 
     /**

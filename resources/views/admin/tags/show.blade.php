@@ -1,22 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0"> Detalles de la etiqueta </h5>
-                        </div>
-                        <div class="card-body">
-                            <p><strong>Nombre</strong> {{ $tag->title }}</p>
-                            <p><strong>Slug</strong>   {{ $tag->slug }}</p>
-                            <p><strong>fecha:</strong>   {{ $tag->created_at }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @component('shared._card')
+        @slot('header', 'Detalles de la etiqueta')
+            
+        @slot('content')         
+            <p><strong>Nombre</strong> {{ $tag->title }}</p>
+            <p><strong>Slug</strong> {{ $tag->slug }}</p>
+            <p><strong>fecha:</strong> {{ $tag->created_at }}</p> 
+        @endslot
+    @endcomponent
 @endsection

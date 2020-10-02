@@ -13,13 +13,6 @@
     @slot('content') {{-- OPEN CONTENT SLOT --}}
 
     @component('shared._table') {{-- OPEN TABLE COMPONENT --}}
-        
-        @slot('header')
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Detalles</th>
-            <th colspan="3">&nbsp;</th>
-        @endslot
 
         @slot('body') {{-- OPEN BODY SLOT--}}
             @foreach ($posts as $post)

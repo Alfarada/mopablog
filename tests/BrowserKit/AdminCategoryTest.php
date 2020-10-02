@@ -152,7 +152,7 @@ class AdminCategoryTest extends BrowserTestCase
         // When
         $this->actingAs($admin)
             ->visitRoute('categories.index')
-            ->press('Eliminar')
+            ->press('eliminar')
             ->see('Categoría eliminada con exito')
             ->seePageIs(route('categories.index'));
 

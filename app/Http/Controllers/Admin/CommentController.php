@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\{Post,Comment};
+use App\Http\Controllers\Controller;
 
 class CommentController extends Controller
 {

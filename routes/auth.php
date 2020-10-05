@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Route;
 /**
  * routes that require authentication and administrator status
  */
-
-// Route::post('post/{post}/comment', 'CommentController@store')->name('comments.store');
-
  
 Route::get('tags', 'TagController@index')->name('tags.index');
 
@@ -57,4 +54,9 @@ Route::delete('posts/delete/{post}', 'PostController@destroy')->name('posts.dest
 
 
 // Comments
+
+Route::post('post/{post}/comment', 'CommentController@store')->name('comments.store');
+// Route::post('post/{post}/comment', function () {
+//     return 'Comentario';
+// })->name('comments.store');
 

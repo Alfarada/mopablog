@@ -25,4 +25,4 @@ Route::get('categories/category/{category}-{slug}', 'PageController@category')->
 Route::get('tags/tag/{tag}-{slug}', 'PageController@tag')->name('tag');
 
 // Comments
-Route::post('post/{post}/comment', 'CommentController@store')->name('comments.store');
+// Route::post('post/{post}/comment', 'CommentController@store')->name('comments.store');

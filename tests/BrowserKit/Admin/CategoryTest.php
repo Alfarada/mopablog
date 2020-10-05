@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\BrowserKit;
+namespace Tests\BrowserKit\Admin;
 
 use App\Category;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class AdminCategoryTest extends BrowserTestCase
+class CategoryTest extends BrowserTestCase
 {
     use RefreshDatabase;
 

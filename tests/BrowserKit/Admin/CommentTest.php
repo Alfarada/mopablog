@@ -5,7 +5,7 @@ namespace Tests\BrowserKit;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class AdminCommentTest extends BrowserTestCase
+class CommentTest extends BrowserTestCase
 {
     use RefreshDatabase;
 
@@ -54,9 +54,6 @@ class AdminCommentTest extends BrowserTestCase
         ]);
 
         $this->seePageIs(route('post', $post->url_attr));
-
     }
-
-    
     
 }

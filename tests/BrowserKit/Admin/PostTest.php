@@ -6,7 +6,7 @@ use App\Post;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class AdminPostTest extends BrowserTestCase
+class PostTest extends BrowserTestCase
 {
     use RefreshDatabase;
 

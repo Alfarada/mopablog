@@ -6,7 +6,7 @@ use App\Tag;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class AdminTagTest extends BrowserTestCase
+class TagTest extends BrowserTestCase
 {
     use RefreshDatabase;
 

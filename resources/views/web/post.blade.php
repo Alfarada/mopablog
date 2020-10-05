@@ -12,16 +12,24 @@
                 @if($post->file)
                 <img src="{{ $post->file }}" class="img-responsive card-img-top" alt="{{ $post->name }}">
                 @endif
-                <p class="card-text">
-                    {{ $post->excerpt }}
-                </p>
+                <p class="card-text"> {{ $post->excerpt }} </p>
                 <hr>
                 {!! $post->body !!}
                 <hr>
                 <h5>Etiquetas</h5>
                 @foreach ($post->tags as $tag)
-                    <a href="{{ route('tag', [$tag->id,$tag->slug]) }}"> {{ $tag->title }} </a>
+                    <a href="{{ route('tag', $tag->url_attr) }}"> {{ $tag->title }} </a>
                 @endforeach
+                <hr>
+                {{-- Comments --}}
+                <h4>Comentarios</h4>
+                
+                {!! Form::open(['route' => ['comments.store', $post], 'method' => 'POST', 'class' => 'form']) !!}
+                    {!! Form::textarea('comment',null, ['class' => 'form-control', 'rows' => 6, 'label' => 'Escribe un comentario']) !!}
+                    {!! Form::submit('Publicar comentario', ['class' => 'my-3 btn btn-primary']) !!}
+                {!! Form::close() !!}
+                
+
             </div>
         </div>
     </div>

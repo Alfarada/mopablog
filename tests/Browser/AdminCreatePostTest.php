@@ -2,13 +2,11 @@
 
 namespace Tests\Browser;
 
-use App\Category;
-use App\Post;
-use App\Tag;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\{Category,Tag};
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 use Tests\TestHelpers;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class AdminCreatePostTest extends DuskTestCase
 {

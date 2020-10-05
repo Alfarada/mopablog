@@ -2,9 +2,7 @@
 
 namespace Tests\BrowserKit;
 
-use App\Category;
 use App\Post;
-use App\Tag;
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

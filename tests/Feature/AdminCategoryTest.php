@@ -2,9 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Category;
-use App\Tag;
-use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

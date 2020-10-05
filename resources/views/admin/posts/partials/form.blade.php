@@ -22,7 +22,7 @@
 {{-- Img field --}}
 <div class="form-group">
     {{ Form::label('file', 'Imagen')}}
-    {{ Form::file('file') }}
+    {{ Form::file('file', ['class' => 'input']) }}
 </div>
 
 {{-- Radio Buttons --}}

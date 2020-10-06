@@ -23,6 +23,17 @@
                 <hr>
                 {{-- Comments --}}
                 <h4>Comentarios</h4>
+
+                @foreach ($post->lastestComments as $comment)
+                    <div class="container d-flex">
+                        {{-- <p ><strong>{{ $comment->user->name }}</strong>  --}}
+                            {{-- <h5 class="text-muted"> {{ $comment->created_at->diffForHumans() }} </h5></p> --}}
+                            <div class="p-2 mr-3"> Publicado por : <strong>{{ $comment->user->name }}</strong> </div>
+                            <div class="p-2 text-muted">{{ $comment->created_at->diffForHumans() }}</div>
+                    </div>
+                    <div class="container mt-3 h5"> {{ $comment->comment }} </div>
+                    <hr>
+                @endforeach
                 
                 {!! Form::open(['route' => ['comments.store', $post], 'method' => 'POST', 'class' => 'form']) !!}
                     {!! Form::textarea('comment',null, ['class' => 'form-control', 'rows' => 6, 'label' => 'Escribe un comentario']) !!}

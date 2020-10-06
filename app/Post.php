@@ -32,6 +32,11 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function lastestComments()
+    {
+        return $this->comments()->orderBy('created_at', 'DESC');
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

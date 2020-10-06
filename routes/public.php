@@ -24,3 +24,7 @@ Route::get('post/{post}-{slug}', 'PageController@post')->name('post');
 Route::get('categories/category/{category}-{slug}', 'PageController@category')->name('category');
 
 Route::get('tags/tag/{tag}-{slug}', 'PageController@tag')->name('tag');
+
+Route::fallback(function () {
+    return response()->view('errors/404',[],404);
+});

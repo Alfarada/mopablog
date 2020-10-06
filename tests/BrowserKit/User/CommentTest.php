@@ -77,4 +77,25 @@ class CommentTest extends BrowserTestCase
             ->see($post->title)
             ->see($comment->comment);
     }
+
+    function test_user_cannot_post_an_empty_comment()
+    {
+        
+        // Having
+        $user = $this->defaultUser();
+
+        $post = $this->defaultPost([
+            'status' => 'PUBLISHED' // IMPORTANT!
+        ]);
+
+        // When 
+        $this->actingAs($user)
+            ->visitRoute('post', $post->url_attr)
+            ->type('','comment')
+            ->press('Publicar comentario');
+        
+        // Expect 
+        $this->seePageIs(route('post', $post->url_attr));
+        
+    }
 }

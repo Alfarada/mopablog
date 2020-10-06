@@ -37,6 +37,11 @@ class Post extends Model
         return $this->comments()->orderBy('created_at', 'DESC');
     }
 
+    public function countComments()
+    {
+        return $this->comments()->count();
+    }
+    
     public function comments()
     {
         return $this->hasMany(Comment::class);

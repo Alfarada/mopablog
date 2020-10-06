@@ -24,10 +24,13 @@
                 {{-- Comments --}}
                 <h4>Comentarios</h4>
 
+                {{-- if comment empty --}}
+                @if ($post->countComments() === 0)
+                    <p>Haz tu primer comentario.</p>
+                @endif
+
                 @foreach ($post->lastestComments as $comment)
                     <div class="container d-flex">
-                        {{-- <p ><strong>{{ $comment->user->name }}</strong>  --}}
-                            {{-- <h5 class="text-muted"> {{ $comment->created_at->diffForHumans() }} </h5></p> --}}
                             <div class="p-2 mr-3"> Publicado por : <strong>{{ $comment->user->name }}</strong> </div>
                             <div class="p-2 text-muted">{{ $comment->created_at->diffForHumans() }}</div>
                     </div>

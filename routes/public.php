@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/','blog');
+
 Auth::routes();
 
 Route::get('blog', 'PageController@blog')->name('blog');
@@ -23,6 +24,3 @@ Route::get('post/{post}-{slug}', 'PageController@post')->name('post');
 Route::get('categories/category/{category}-{slug}', 'PageController@category')->name('category');
 
 Route::get('tags/tag/{tag}-{slug}', 'PageController@tag')->name('tag');
-
-// Comments
-// Route::post('post/{post}/comment', 'CommentController@store')->name('comments.store');

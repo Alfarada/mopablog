@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\BrowserKit;
+namespace Tests\BrowserKit\Admin;
 
 use Tests\BrowserTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;

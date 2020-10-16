@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/','blog');
+// Route::redirect('/','blog');
+
+Route::get('/', function () {
+    return view('layouts.app');
+});
 
 Auth::routes();
 

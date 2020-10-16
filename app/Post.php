@@ -55,7 +55,9 @@ class Post extends Model
     public function storeFile($request)
     {
         if ($request->file('file')) {
-            $path = Storage::disk('public')->put('image', $request->file('file'));
+            $path = Storage::disk('public')
+                ->put('image', $request->file('file'));
+                
             $this->fill(['file' => asset($path)])->save();
         }
     }

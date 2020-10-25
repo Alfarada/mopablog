@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 // Route::redirect('/','blog');
 
-Route::get('/', function () {
-    return view('layouts.app');
+Route::get('/', function (){
+    return view('web.homepage');
 });
 
 Auth::routes();

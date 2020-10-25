@@ -19,11 +19,17 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
-    <div id="app">
+
+    <div class="container">
+        <h6 class="my-3 bold">Contacte con nosotros a este número +58 99 999 99 99</h6>
+    </div>
+    <header id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -105,7 +111,7 @@
         </div>
         @endif
 
-        {{-- Alert message --}}
+        <!-- Alert message -->
         <div class="container mt-4">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
@@ -115,10 +121,11 @@
                 </div>
             </div>
         </div>
+        <!-- Alert message -->
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+    </header>
 </body>
 
 </html>

@@ -12,16 +12,17 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
     @yield('scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- Styles -->
     <link rel="icon" href="{{ asset('favicon.ico') }}">
-
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -31,6 +32,9 @@
     </div>
     <header id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <a class="navbar-brand ml-5 pl-5" href="#">
+                <img src="{{ asset('svg/logo.png') }}" width="40" height="40" alt="MOPAVIV">
+            </a>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -122,10 +126,47 @@
             </div>
         </div>
         <!-- Alert message -->
-        <main class="py-4">
-            @yield('content')
-        </main>
     </header>
+
+    <main class="wrapper py-4">
+        @yield('content')
+    </main>
+
+    <footer class="footer bg bg-primary">
+        <!-- NABVAR BOOTM-->
+        <div class="container d-flex justify-content-center flex-wrap  my-3 pt-2 pb-3 ">
+            <!--<ul class="list-inline ">-->
+            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="#">Inicio</a></li>
+            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="#">Blog</a></li>
+            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="#">Quienes somos</a></li>
+            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="#">Contacto</a></li>
+    
+            <!--</ul>-->
+        </div>
+        <!-- NABVAR BOOTM-->
+    
+        <!-- SOCIAL NETWORKS-->
+        <div class=" row">
+            <div class="container col-8  d-flex justify-content-center flex-wrap text-center">
+                <div class="col-sm-2 m-2 h2 ">
+                    <a class="text-decoration-none text-white" href=""><i class="fab fa-facebook"></i></a>
+                </div>
+                <div class="col-sm-2 m-2 h2 ">
+                    <a class="text-decoration-none text-white" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="col-sm-2 m-2 h2 ">
+                    <a class="text-decoration-none text-white" href=""><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="col-sm-2 m-2 h2 ">
+                    <a class="text-decoration-none text-white" href=""><i class="fas fa-envelope"></i></a>
+                </div>
+    
+            </div>
+            <div class="container mt-5">
+                <p class="mb-2 text-center text-white">Motivar para Vivir © 2019 Todos los derechos reservados.</p>
+            </div> 
+        </div> 
+    </footer>
 </body>
 
 </html>

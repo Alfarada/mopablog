@@ -35,9 +35,7 @@
             @endforeach   
         @endslot {{-- END BODY SLOT--}}
     @endcomponent {{-- END TABLE COMPONENT --}}
-
-    {{ $posts->render() }}  {{-- POST PAGINATION --}}
-
     @endslot    {{-- END CONTENT SLOT --}}   
 @endcomponent {{-- END CARD COMPONENT --}}
+<div class="container d-flex justify-content-center">{{ $posts->render() }}</div>
 @endsection

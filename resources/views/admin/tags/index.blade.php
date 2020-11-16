@@ -30,7 +30,8 @@
                 @endforeach
             @endslot
         @endcomponent
-        {{ $tags->render() }}
     @endslot
-@endcomponent
+    @endcomponent
+    
+<div class="container d-flex justify-content-center">{{ $tags->render() }}</div>
 @endsection

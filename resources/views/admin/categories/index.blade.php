@@ -33,9 +33,7 @@
                 @endforeach
             @endslot
         @endcomponent
-
-        {{ $categories->render() }}
-
     @endslot
 @endcomponent
+<div class="container d-flex justify-content-center">{{ $categories->render() }}</div>
 @endsection

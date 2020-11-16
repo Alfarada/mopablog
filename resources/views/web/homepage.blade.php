@@ -3,8 +3,8 @@
 @section('content')
 
 <!-- Cover image -->
-<div class="container-fluid">
-  Esta es la imagen de Portada
+<div class="">
+  <img src="{{ asset('image/other.png') }}" class="img-fluid portada" alt="Responsive image">
 </div>
 <!-- Cover image -->
 
@@ -13,17 +13,17 @@
     <!-- Content -->
     <div class="col-9">
       <!-- Open Card -->
-      <div class="card">
+      <div class="card primary">
         <h2 class="mt-4 text-center">Nuestra Historia</h2>
         <hr class="mx-4">
         <div class="row">
 
           <div class="card-body col-6">
-            <p class="p-3">La idea de crear la Asociación Civil Motivar para Vivir - MOPAVIV - nace como una Misión de
-              Vida de dos
-              personas afectadas por el Cáncer de Laringe, Ercides José Leiba Fuentes y Leidy Josefina Yepez Barreto,
-              Quienes asistían a la Asociación Venezolana de Laringectomizados - ASOVELA- (Caracas, Venezuela) en la
-              cual enseñan a hablar sin cuerdas vocales mediante una técnic denominda Erigmofoní<p>
+            <p class="px-3">La idea de crear la Asociación civil Motivar para Vivir – MOPAVIV nace como la necesidad de
+              cumplir con una Misión de Vida de dos personas Laringectomizadas por causa del Cáncer de Laringe. Ercides
+              José Leiba Fuentes y Leidy Josefina Yepez Barreto; quienes se conocieron en una institución denominada
+              ASOVELA – Asociación Venezolana de Laringectomizados, ubicada en la ciudad de Caracas, Venezuela, en la
+              cual les enseñan a hablar sin cuerdas vocales mediante una técnica terapéutica denominada Erigmofonía.<p>
 
           </div>
           <div class="col-6 d-flex align-items-center justify-content-center">
@@ -69,7 +69,7 @@
     <!-- Content -->
 
     <!-- Barra lateral -->
-    <aside class="col-3">
+    <aside class="col-3 sidebar">
       <div class="card">
         <div class="card-body">
           <h3 class="blod"> Artículos recientes</h3>
@@ -162,7 +162,7 @@
     <div class="col-9 my-5">
       <div class="card">
         <div class="card-body">
-          <h2 class="text-center">¿ Que es ASOVELA ?</h2>
+          <h2 class="text-center"> ASOVELA </h2>
           <hr class="mx-4">
           <p class="mt-3 mb-5 text-center ">ASOVELA – Asociación Venezolana de Laringectomizados es una institución
             ubicada en la ciudad de Caracas,
@@ -183,14 +183,76 @@
             <small class="text-muted">(Para mayor información visitar la página de Facebook de ASOVELA)</small>
           </p>
           <div class="embed-responsive rounded-lg embed-responsive-16by9">
-            <iframe width="640" height="480" src="https://www.youtube.com/embed/XRudg7MYDro" frameborder="0"
+            {{-- <iframe width="640" height="480" src="https://www.youtube.com/embed/XRudg7MYDro" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+              allowfullscreen></iframe> --}}
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-9 mb-5">
+      <div class="card">
+        <h2 class="card-header text-center text-dark ">¿ Quieres ayudarnos ?</h2>
+        <div class="card-body">
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas odio animi ex voluptate impedit possimus nisi doloribus magni esse nam.
+            <a class="btn btn-primary" href="https://www.paypal.com/paypalme/mopaviv">Donar</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--MORE INFORMATION-->
+  <div class="row">
+    <div class="col-9 mb-5">
+      <div class="card">
+        <h2 class="card-header text-center text-dark ">Mas Información</h2>
+        <div class="card-body">
+          <div class="container">
+            <div class="row text-center">
+              <!--BLOG-->
+              <div class="col-sm-12 col-lg-3 m-auto ">
+                <div class="h2">
+                  <i style="color:#ec407a;" class="fas fa-newspaper"></i>
+                </div>
+                <a class="h3" style="color:#ec407a;" href="{{ url('/blog') }}">Blog</a>
+                <hr>
+                <p class="">Visita nuestros ultimos posts</p>
+              </div>
+              <!--BLOG-->
+
+              <!--CONTACTO-->
+              <div class=" col-sm-12 col-lg-3 m-auto ">
+                <div class="h2">
+                  <i class="fas fa-envelope" style="color:#ec407a;"></i>
+                </div>
+                <a class="h3" style="color:#ec407a;" href="">Contacto</a>
+                <hr>
+                <p class="">¿ Necesitas hablar con nosotros ? </p>
+              </div>
+              <!--CONTACTO-->
+
+              <!--PROYECTOS-->
+              <div class=" col-sm-12 col-lg-3 m-auto ">
+                <div class="h2">
+                  <a href=""><i class="fab fa-telegram-plane" style="color:#ec407a;"></i></a>
+                </div>
+                <a class="h3" style="color:#ec407a;" href="">Proyectos</a>
+                <hr>
+                <p class="">Enterate de los ultimos proyectos de la Asociación
+                </p>
+              </div>
+              <!--PROYECTOS-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 @endsection

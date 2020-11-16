@@ -27,8 +27,10 @@
 
 <body>
 
-    <div class="container">
-        <h6 class="my-3 bold">Contacte con nosotros a este número +58 99 999 99 99</h6>
+    <div class="bg-primary">
+        <div class="container">
+            <p class="text-white mb-0 py-3">Contacte con nosotros a este número +58 99 999 99 99</p>
+        </div>
     </div>
     <header id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -53,16 +55,16 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
 
-                        <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Donar</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{ url('/blog') }}">Blog</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{ url('/donar')}}">Donar</a></li>
 
                         @guest
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
@@ -116,7 +118,7 @@
         @endif
 
         <!-- Alert message -->
-        <div class="container mt-4">
+        <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
 
@@ -128,17 +130,17 @@
         <!-- Alert message -->
     </header>
 
-    <main class="wrapper py-4">
+    <main class="wrapper">
         @yield('content')
     </main>
 
-    <footer class="footer bg bg-primary">
+    <footer class="footer bg-primary">
         <!-- NABVAR BOOTM-->
         <div class="container d-flex justify-content-center flex-wrap  my-3 pt-2 pb-3 ">
             <!--<ul class="list-inline ">-->
-            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="#">Inicio</a></li>
-            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="#">Blog</a></li>
-            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="#">Quienes somos</a></li>
+            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="{{ url('/') }}">Inicio</a></li>
+            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="{{ url('/blog') }}">Blog</a></li>
+            <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="{{ url('/donar')}}">Donar</a></li>
             <li class="list-inline-item mx-5 mt-3 "><a class="text-decoration-none text-white" href="#">Contacto</a></li>
     
             <!--</ul>-->
@@ -149,7 +151,7 @@
         <div class=" row">
             <div class="container col-8  d-flex justify-content-center flex-wrap text-center">
                 <div class="col-sm-2 m-2 h2 ">
-                    <a class="text-decoration-none text-white" href=""><i class="fab fa-facebook"></i></a>
+                    <a class="text-decoration-none text-white" href="https://www.facebook.com/profile.php?id=100008575572134"><i class="fab fa-facebook"></i></a>
                 </div>
                 <div class="col-sm-2 m-2 h2 ">
                     <a class="text-decoration-none text-white" href=""><i class="fab fa-instagram"></i></a>

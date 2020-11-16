@@ -46,7 +46,7 @@ class AdminPageTest extends BrowserTestCase
 
         $this->actingAs($admin)
             ->visit('/blog')
-            ->seeInElement('h1', 'Lista de artículos')
+            ->seeInElement('h1', '- Artículos')
             ->see($post->title)
             ->click('Leer más')
             ->seePageIs(route('post', [$post->id, $post->slug]))

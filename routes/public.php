@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::redirect('/','blog');
 
-Route::get('/', function (){
-    return view('web.homepage');
-});
+Route::get('/', 'homepageController@lastArticles');
 
 Auth::routes();
 
@@ -30,5 +28,5 @@ Route::get('categories/category/{category}-{slug}', 'PageController@category')->
 Route::get('tags/tag/{tag}-{slug}', 'PageController@tag')->name('tag');
 
 Route::fallback(function () {
-    return response()->view('errors/404',[],404);
+    return response()->view('errors/404', [], 404);
 });

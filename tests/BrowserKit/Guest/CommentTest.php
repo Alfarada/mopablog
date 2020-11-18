@@ -47,4 +47,12 @@ class CommentTest extends BrowserTestCase
 
         $this->seePageIs(route('login'));
     }
+
+    /** @test */
+
+    function ir_can_visit_the_page_at_first()
+    {
+        $this->visit('/')
+            ->assertResponseStatus(200);
+    }
 }

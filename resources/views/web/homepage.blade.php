@@ -73,7 +73,9 @@
       <div class="card">
         <div class="card-body">
           <h3 class="blod"> Artículos recientes</h3>
-          <p> Este es el contenido de los articulos mas recientes</p>
+          @foreach ($posts as $post)
+            <p> <a href="{{ route('post', [$post->id,$post->slug] ) }}"> {{ $post->title }} </a></p>
+          @endforeach
         </div>
       </div>
     </aside>
@@ -183,9 +185,9 @@
             <small class="text-muted">(Para mayor información visitar la página de Facebook de ASOVELA)</small>
           </p>
           <div class="embed-responsive rounded-lg embed-responsive-16by9">
-            {{-- <iframe width="640" height="480" src="https://www.youtube.com/embed/XRudg7MYDro" frameborder="0"
+            <iframe width="640" height="480" src="https://www.youtube.com/embed/XRudg7MYDro" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe> --}}
+              allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -198,8 +200,8 @@
         <h2 class="card-header text-center text-dark ">¿ Quieres ayudarnos ?</h2>
         <div class="card-body">
           <p class="card-text">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas odio animi ex voluptate impedit possimus nisi doloribus magni esse nam.
-            <a class="btn btn-primary" href="https://www.paypal.com/paypalme/mopaviv">Donar</a>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div><a class="btn btn-primary" href="https://www.paypal.com/paypalme/mopaviv">Donar</a></div>
           </p>
         </div>
       </div>

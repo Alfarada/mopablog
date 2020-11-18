@@ -26,12 +26,6 @@
 </head>
 
 <body>
-
-    <div class="bg-primary">
-        <div class="container">
-            <p class="text-white mb-0 py-3">Contacte con nosotros a este número +58 99 999 99 99</p>
-        </div>
-    </div>
     <header id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <a class="navbar-brand ml-5 pl-5" href="#">
@@ -70,10 +64,10 @@
                         @endif
                         @else
                             @if (auth()->user()->isAdmin())
-                                <li class="nav-item"><a class="nav-link" href=" {{ route('tags.index') }}">Etiquetas</a></li>
-                                <li class="nav-item"><a class="nav-link" href=" {{ route('categories.index') }}">Categorías</a>
+                                <li class="nav-item active"><a class="nav-link" href=" {{ route('tags.index') }}">Etiquetas</a></li>
+                                <li class="nav-item active"><a class="nav-link" href=" {{ route('categories.index') }}">Categorías</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href=" {{ route('posts.index') }}">Posts</a></li>
+                                <li class="nav-item active"><a class="nav-link" href=" {{ route('posts.index') }}">Posts</a></li>
                             @endif
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -128,6 +122,7 @@
             </div>
         </div>
         <!-- Alert message -->
+        
     </header>
 
     <main class="wrapper">
